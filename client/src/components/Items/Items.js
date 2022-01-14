@@ -6,6 +6,8 @@ import Page from '../Page/Page';
 
 function Items() {
   const [items, setItems] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
 
   const getItems = () => {
     axios.get('/items')
@@ -17,11 +19,19 @@ function Items() {
       .catch(err => console.log(`Error: ${err}`));
   }
 
-  const [searchInput, setSearchInput] = useState('');
-
   const searchItems = (searchValue) => {
     setSearchInput(searchValue);
     // console.log(searchValue);
+    if(searchInput !== ''){
+      const filteredData = items.filter((item) => {
+        return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase());
+      })
+      setFilteredResults(filteredData);
+      console.log(filteredData);
+    } else{
+      setFilteredResults(items)
+    }
+    
   }
 
   useEffect(() => {
@@ -31,14 +41,24 @@ function Items() {
     return(
       <div>
         <input type="text" placeholder='Enter address here' onChange={(e) => searchItems(e.target.value)}></input>
-        {items.map((item, index) => {
+        {searchInput.length > 1? (
+          filteredResults.map((item, index) => {
           // console.log(item);
           return (
             <div key={item._id}>
               <Item id={item._id} title={item.title} price={item.price}/>
             </div>
           )
-        })}
+          })
+        ) : (
+          items.map((item) => {
+            return(
+              <div key={item._id}>
+                <Item id={item._id} title={item.title} price={item.price}/>
+              </div>
+            )
+          })
+        )}
       </div>
 
       

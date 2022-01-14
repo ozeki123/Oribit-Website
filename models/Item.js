@@ -5,10 +5,29 @@ const Item = mongoose.Schema({
         type: String,
         required: true
     },
-    price: {
-        type: Number,
+    // price: {
+    //     type: Number,
+    //     required: true,
+    // },
+    // location: {
+    //     type: String,
+    //     required: true
+    // },
+    owner: {
+        type: String,
         required: true,
-    }
+    },
+    // description: {
+    //     type: String,
+    //     required: true
+    // },
+    // rating: {
+    //     type: Number
+    // },
+
+},
+{
+    timestamps: true
 });
 
 export default mongoose.model('Items', Item);

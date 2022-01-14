@@ -5,12 +5,12 @@ import { getItems,
         updateItem,
         deleteItem } from '../controllers/itemController.js';
 
-const router = express.Router();
+const itemRouter = express.Router();
 
-router.get('/', getItems);
-router.get('/:id', getItemById);
-router.post('/', createItem);
-router.put('/:id', updateItem);
-router.delete('/:id', deleteItem);
+itemRouter.get('/', getItems);
+itemRouter.get('/:id', getItemById);
+itemRouter.post('/', createItem);
+itemRouter.put('/:id', updateItem);
+itemRouter.delete('/:id', deleteItem);
 
-export default router;
+export default itemRouter;
