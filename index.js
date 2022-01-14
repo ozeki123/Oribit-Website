@@ -1,7 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import itemRouter from './routes/item.js';
-import userRouter from './routes/user.js'
+import authRouter from './routes/auth.js';
+import userRouter from './routes/user.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
@@ -26,6 +27,7 @@ const port = process.env.PORT;
 app.use(cors());
 app.use(express.json());
 app.use('/items', itemRouter);
+app.use('/', authRouter);
 app.use('/users', userRouter);
 
 app.get('/', (req, res) => {
