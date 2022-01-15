@@ -54,8 +54,6 @@ authRouter.post('/login', async (req,res) => {
   //Create and assign a token to user
   const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET);
   res.header('auth-token', token).send(token);
-
-  res.send('Logged in')
 })
 
 // userRouter.get('/users', getUsers);

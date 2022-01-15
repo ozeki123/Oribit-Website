@@ -19,11 +19,16 @@ function Register() {
         email: user.email,
         password: user.password
       })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err))
-      alert(`Welcome ${user.name}`)
+      .then((res) => {
+        console.log(res);
+        alert(`Welcome ${user.name}`);
+      })
+      .catch((err) => {
+        alert('Email already exists');
+        console.log(err);
+      })
     } else{
-      alert('Please enter all fields')
+      alert('Please enter all fields');
     }
 
     
