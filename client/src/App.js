@@ -8,6 +8,7 @@ import Page from './components/Page/Page';
 import Host from './components/Host/Host';
 import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
+import Register from './components/Register/Register';
 
 function App() { 
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/page" element={<Page/>}></Route>
         <Route path="/items/:id" element={<Page/>}></Route>
         <Route path="/host" element={<Host/>}></Route>
+        <Route path="/register" element={<Register/>}></Route>
       </Routes>
     </div>
     

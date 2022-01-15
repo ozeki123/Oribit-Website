@@ -8,7 +8,7 @@ import verifyToken from '../middleware/verifyToken.js';
 
 const itemRouter = express.Router();
 
-itemRouter.get('/', verifyToken, getItems);
+itemRouter.get('/', getItems);
 itemRouter.get('/:id', getItemById);
 itemRouter.post('/', createItem);
 itemRouter.put('/:id', updateItem);
