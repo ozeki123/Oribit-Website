@@ -11,6 +11,8 @@ import Navbar from './components/Navbar/Navbar';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import UserContext from './contexts/UserContext';
+import Profile from './components/Profile/Profile';
+import Signup from './components/Signup.js/Signup';
 
 function App() { 
   const [user, setUser] = useState(null);
@@ -26,6 +28,8 @@ function App() {
           <Route path="/host" element={<Host/>}></Route>
           <Route path="/register" element={<Register/>}></Route>
           <Route path="/login" element={<Login/>}></Route>
+          <Route path="/profile" element={<Profile/>}></Route>
+          <Route path="/signup" element={<Signup/>}></Route>
         </Routes>
       </div>
     </UserContext.Provider>

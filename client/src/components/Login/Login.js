@@ -1,11 +1,14 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import UserContext from '../../contexts/UserContext';
+import { Link } from 'react-router-dom';
 
 function Login(){
   const [data, setData] = useState({
     email: '',
     password: ''
   })
+  const {user, setUser} = useContext(UserContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -16,8 +19,33 @@ function Login(){
         password: data.password
       })
       .then((res) => {
-        console.log(res);
-        alert('Logged in');
+        axios.get(`http://localhost:5000/users/${res.headers.id}`)
+        .then((userRes) => {
+          // console.log(res.data.name);
+          setUser({
+            email: data.email,
+            password: data.password,
+            token: res.headers.token,
+            id: res.headers.id,
+            name: userRes.data.name,
+          });
+
+          localStorage.setItem('token', res.headers.token);
+        })
+        .catch(err => console.log(err));  
+        // console.log(res);
+        // console.log(res.headers.token);
+        // setUser({
+        //   email: data.email,
+        //   password: data.password,
+        //   token: res.headers.token,
+        //   id: res.headers.id,
+        //   name: res.data.name
+        // });
+        // console.log(res.headers.id);
+        // console.log(user.token)
+        // getUser();
+        // alert('Logged in');
       })
       .catch((err) => {
         console.log(err);
@@ -29,12 +57,20 @@ function Login(){
     
   }
 
+  const getUser = () => {
+    
+  }
+
   const handleChange = (event) => {
     setData({
       ...data,
       [event.target.name]: event.target.value
     });
   }
+
+  // useEffect(() => {
+  //   localStorage.setItem("token", JSON.stringify(user.token))
+  // }, [user.token])
 
   return (
     <div>
@@ -54,7 +90,18 @@ function Login(){
           value={data.password}
           onChange={handleChange}
         />
-        <button type="submit">Sign in</button>
+        {
+          !user &&
+            <button type="submit">
+              Sign in
+            </button>
+        }
+        {
+          user && 
+            <Link to="/">
+              <button type="submit">Sign in</button>
+            </Link>
+        }
       </form>
     </div>
   )

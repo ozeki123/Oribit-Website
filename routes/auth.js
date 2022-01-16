@@ -28,6 +28,7 @@ authRouter.post('/register', async (req, res) => {
 
   const user = new User({
     name: req.body.name,
+    username: req.body.username,
     email: req.body.email,
     password: hashedPassword
   }); 
@@ -53,7 +54,11 @@ authRouter.post('/login', async (req,res) => {
 
   //Create and assign a token to user
   const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET);
-  res.header('auth-token', token).send(token);
+  res.set({
+    'token': token,
+    'id': user._id
+  }).send(token);
+  // res.header('token', token).send(token);
 })
 
 // userRouter.get('/users', getUsers);
