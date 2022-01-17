@@ -1,7 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
 import { faCheck,  faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 import './Signup.scss'
+import axios from 'axios';
 
 const NAME_REGEX = /^[A-Za-z.\s_-]+$/;
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
@@ -74,13 +76,47 @@ function Signup () {
 
   }, [user, pwd])
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  //   console.log(name, user, email, pwd);
+  //   setSuccess(true);
+  // }
+    try{
+      const response = await axios.post('http://localhost:5000/register', 
+        
+      JSON.stringify({
+        name,
+        username: user,
+        email,
+        password: pwd
+      }),
+      {
+        headers: {'Content-Type': 'application/json'},
+        // withCredentials: true
+      }
+      );
+      console.log(response.data);
+      console.log(JSON.stringify(response.data.user));
+      console.log(JSON.stringify(response))
+      setSuccess(true);
+    } catch(err) {
+      setErrMsg(err);
+      // errRef.current.focus();
+    }
+  }
 
   return (
+    <>
+    {success ? (
+      <section>
+        <h1>Registration successful.</h1>
+        <Link to="/signin">Sign in</Link>
+      </section>
+    ) : (
     <section>
-      <p pref={errRef} className={errMsg ? "errmsg" : 
-      "offscreen"} aria-live="assertive">{errMsg}</p>
+      
       <h1>Sign up for Orbit</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="name">
           Full Name
           <span className={validName ? "valid" : "hide"}>
@@ -120,7 +156,7 @@ function Signup () {
         <input
           type="text"
           id="username"
-          placeholder="Enter email address here"
+          placeholder="Enter username here"
           ref={userRef}
           autoComplete="off"
           required
@@ -150,6 +186,7 @@ function Signup () {
         <input 
           type="text"
           id="email"
+          placeholder="Enter email address"
           onChange={(e) => setEmail(e.target.value)}
           required
           aria-invalid={validEmail ? "false" : "true"}
@@ -174,6 +211,7 @@ function Signup () {
         <input
           type="password"
           id="password"
+          placeholder="Enter password"
           onChange={(e) => setPwd(e.target.value)}
           required
           aria-invalid={validPwd ? "false" : "true"}
@@ -188,7 +226,15 @@ function Signup () {
         </p>
         <button disabled={!validName || !validUser || !validPwd ? true : false}>Sign Up</button>
       </form>
+      <p>
+          Already registered?
+          <span>
+            <Link to="/signin">Sign in</Link>
+          </span>
+      </p>
     </section>
+        )}
+    </>
   )
 }
 

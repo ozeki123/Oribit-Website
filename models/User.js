@@ -17,6 +17,14 @@ const User = mongoose.Schema({
   password:{
     type: String,
     required: true
+  },
+  token: {
+    type: String
+  },
+  role:{
+    type: String,
+    default: 'user',
+    enum: ['user', 'owner', 'admin']
   }
 });
 

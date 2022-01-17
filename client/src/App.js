@@ -12,7 +12,8 @@ import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import UserContext from './contexts/UserContext';
 import Profile from './components/Profile/Profile';
-import Signup from './components/Signup.js/Signup';
+import Signup from './components/Signup/Signup';
+import Signin from './components/Signin/Signin';
 
 function App() { 
   const [user, setUser] = useState(null);
@@ -30,6 +31,7 @@ function App() {
           <Route path="/login" element={<Login/>}></Route>
           <Route path="/profile" element={<Profile/>}></Route>
           <Route path="/signup" element={<Signup/>}></Route>
+          <Route path="/signin" element={<Signin/>}></Route>
         </Routes>
       </div>
     </UserContext.Provider>

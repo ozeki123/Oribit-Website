@@ -30,11 +30,24 @@ authRouter.post('/register', async (req, res) => {
     name: req.body.name,
     username: req.body.username,
     email: req.body.email,
-    password: hashedPassword
+    password: hashedPassword,
+    role: req.body.role || 'user'
   }); 
+
+  const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET);
+  user.token = token;
+  await user.save()
+
   try{
     const savedUser = await user.save();
-    res.send({user: user._id});
+    res.send({id: user._id,
+              name: user.name,
+              username: user.username,
+              email: user.email,
+              token: user.token,
+              role: user.role
+              // roles: user.roles
+            });
   } catch(err){
     res.status(400).send(err);
   }
@@ -42,22 +55,27 @@ authRouter.post('/register', async (req, res) => {
 
 authRouter.post('/login', async (req,res) => {
   //Check if email exists in database
-  const user= await User.findOne({email: req.body.email});
-  if(!user) {
-    return res.status(400).json({message: 'Email is incorrect'});
+  const email= await User.findOne({email: req.body.email});
+  const user = await User.findOne({username: req.body.username});
+  if(!user && !email) {
+    return res.status(400).json({message: 'Username or email is incorrect'});
   }
   //Check if password is correct
   const validPassword = await bcrypt.compare(req.body.password, user.password);
   if(!validPassword){
     return res.status(400).json({message: 'Invalid password'});
+
+    
   }
 
   //Create and assign a token to user
   const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET);
-  res.set({
+  res.send({
     'token': token,
-    'id': user._id
-  }).send(token);
+    'id': user._id,
+    'role': user.role
+    // 'roles': roles
+  });
   // res.header('token', token).send(token);
 })
 
