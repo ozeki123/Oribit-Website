@@ -17,7 +17,7 @@ function Host() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const url = 'http://localhost:5000/items'
+    const url = 'http://localhost:5000/items';
 
     axios.post('/items', {
       title: data.title,

@@ -1,41 +1,68 @@
 import React, { useRef, useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import AuthContext from '../../contexts/AuthProvider';
 import axios from 'axios';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import UserContext from '../../contexts/UserContext';
+import { authContext } from '../../contexts/AuthContext';
 
 function Signin() {
-  const { setAuth } = useContext(AuthContext);
+  const {isLogged, setIsLogged} = useContext(authContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/home";
+
   const userRef = useRef();
   const errRef = useRef();
 
-  const [user, setUser] = useState('');
+  const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [errMsg, setErrMsg] = useState('');
-  const [success, setSuccess] = useState('');
 
   useEffect(() => {
     userRef.current.focus();
-  }, [])
+  }, []);
 
   useEffect(() => {
     setErrMsg('');
-  }, [user, password])
+  }, [username, password]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
       const response = await axios.post('http://localhost:5000/login',
-        JSON.stringify({username: user, password}),
+        JSON.stringify({'user': username, password}),
         {
           headers: {'Content-Type': 'application/json'}
         }
       );
-      // console.log(JSON.stringify(response?.data));
+      
       console.log(response);
-      // console.log(response.data.token, response.data.id);
-      setUser('');
+      const id = response.data.id;
+      const roles = response.data.role;
+      const token = response.data.token;
+      // setAuth({ user, roles, password, token, id})
+      setUserName('');
       setPassword('');
-      setSuccess(true);
+      navigate(from, { replace: true });
+      setIsLogged(true);
+      sessionStorage.setItem('user', username);
+      sessionStorage.setItem('token', token);
+      sessionStorage.setItem('id', id);
+      sessionStorage.setItem('roles', roles);
+      sessionStorage.setItem('isLogged', true);
+      console.log(response.data[0]);
+      // var items = [];
+      // for(var i = 0; i < response.data.length; i++) {
+      //   items.push(response.data[i]);
+      //   console.log(response.data[i]);
+      // }
+      // sessionStorage.setItem('item', JSON.stringify(items));
+      // if(userAuth){
+      //   console.log('Stored to session');
+      //   console.log(`User auth is: ${userAuth}`);
+      // }
+      //local storage set token
+      //if local storage token exists, then 
     } catch(err) {
         console.log(err);
     }
@@ -43,13 +70,6 @@ function Signin() {
   }
 
   return (
-    <>
-      {success ? (
-        <section>
-          <h1>You are logged in</h1>
-          <Link to="/">Go to home</Link>
-        </section>
-      ) : (
     <section>
       <p ref={errRef} className={errMsg ? "error" : "offscreen"} aria-live="assertive">{errMsg}</p>
       <h1>Sign In</h1>
@@ -60,8 +80,8 @@ function Signin() {
           id="username"
           ref={userRef}
           autoComplete="off"
-          onChange={(e) => setUser(e.target.value)}
-          value={user}
+          onChange={(e) => setUserName(e.target.value)}
+          value={username}
           required
         />
         <label htmlFor="password">Password</label>
@@ -81,8 +101,6 @@ function Signin() {
         </span>
       </p>
     </section>
-      )}
-    </>
   )
 }
 

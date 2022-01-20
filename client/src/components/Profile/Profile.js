@@ -1,13 +1,22 @@
 import axios from 'axios';
 import React from 'react';
 import { useEffect, useState, useContext } from "react";
-import UserContext from "../../contexts/UserContext";
+import { authContext } from '../../contexts/AuthContext';
 
 function Profile() {
+  const {isLogged, setIsLogged} = useContext(authContext);
   // const [data, setData] = useState({
   //   name: '',
   // })
-  const {user} = useContext(UserContext);
+  const [login, setLogin] = useState(false);
+
+  useEffect(() => {
+    const item = sessionStorage.getItem('token');
+    if(item) {
+      setLogin(true);
+    }
+  }, [])
+  
 
   // const getUser = () => {
   //   axios.get(`http://localhost:5000/users/${user.id}`)
@@ -27,10 +36,14 @@ function Profile() {
   // })
 
   return (
-    <div>
-      {!user && <h1>User not found</h1>}
-      {user && <h1>Hello {user.name} Your token is {user.token}</h1>}
-    </div>
+    isLogged
+        ? <div>
+            <h1>{sessionStorage.getItem('token')}</h1>
+          </div>
+        :
+          <div>
+            <h1>User not found</h1>
+          </div>
   )
 }
 

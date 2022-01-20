@@ -1,10 +1,4 @@
 import express from 'express';
-import { getUsers,
-         getUserById,
-         createUser,
-         updateUser,
-         deleteUser,
-         loginUser } from '../controllers/userController.js';
 import verifyToken from '../middleware/verifyToken.js';
 import User from '../models/User.js';
 import bcrypt from 'bcrypt';
@@ -55,17 +49,26 @@ authRouter.post('/register', async (req, res) => {
 
 authRouter.post('/login', async (req,res) => {
   //Check if email exists in database
-  const email= await User.findOne({email: req.body.email});
+  const email = await User.findOne({email: req.body.email});
   const user = await User.findOne({username: req.body.username});
   if(!user && !email) {
     return res.status(400).json({message: 'Username or email is incorrect'});
   }
-  //Check if password is correct
+
+  // let validPassword = false;
+
+  // if(!user && email) {
+  //   validPassword = await bcrypt.compare(req.body.password, user.password);
+  // } else {
+  //   validPassword = await bcrypt.compare(req.body.password, email.password);
+  // }
+
   const validPassword = await bcrypt.compare(req.body.password, user.password);
+
+  //Check if password is correct
+  
   if(!validPassword){
     return res.status(400).json({message: 'Invalid password'});
-
-    
   }
 
   //Create and assign a token to user
