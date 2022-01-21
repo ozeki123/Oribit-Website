@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { authContext } from '../../contexts/AuthContext';
+import { authContext } from '../../contexts/Contexts';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
 function Navbar() {

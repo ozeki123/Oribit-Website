@@ -1,7 +1,6 @@
 import React from 'react';
 import { useContext, useEffect, useState } from "react";
-import UserContext from "../../contexts/UserContext";
-import { authContext } from '../../contexts/AuthContext';
+import { authContext } from '../../contexts/Contexts';
 
 function Home() {
   const [login, setLogin] = useState(false);

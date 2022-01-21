@@ -15,20 +15,37 @@ import Signup from './components/Signup/Signup';
 import Signin from './components/Signin/Signin';
 import Layout from './components/Layout/Layout';
 import RequireAuth from './components/RequireAuth/RequireAuth';
-import Test from './components/Test';
-import UserContext from './contexts/UserContext';
-import { authContext } from './contexts/AuthContext';
+import { authContext } from './contexts/Contexts';
+import { userContext } from './contexts/Contexts';
 import useLocalStorage from './hooks/useLocalStorage';
+import { useAxios } from './hooks/useAxios';
 
 function App() { 
   const [isLogged, setIsLogged] = useLocalStorage('isLogged', false);
+  const [user, setUser] = useLocalStorage();
+
+
+
+  // const { response, loading, error } = useAxios({
+  //   method: 'GET',
+  //   url:`/users/ ${sessionStorage.getItem('id')}`,
+  //   headers: {
+  //     accept: 'application/json'
+  //   }
+  // })
+
+  useEffect(() => {
+    console.log('Hello from App.js')
+    console.log(sessionStorage.getItem('id'));
+  }, [])
   // const [user, setUser] = useState(null);
   // const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
-  const [loggedIn, setLoggedIn] = useState(false);
-  const loggedValue = useMemo(() => ({loggedIn, setLoggedIn}), [loggedIn, setLoggedIn])
+  // const [loggedIn, setLoggedIn] = useState(false);
+  // const loggedValue = useMemo(() => ({loggedIn, setLoggedIn}), [loggedIn, setLoggedIn])
   return (
     <authContext.Provider value={{isLogged, setIsLogged}}>
-      <div className="App">
+      <userContext.Provider>
+        <div className="App">
         <Navbar/>
         <Routes>
           <Route path="/" element={<Layout/>}>
@@ -40,7 +57,6 @@ function App() {
             <Route path="/items" element={<Items/>}></Route>
             <Route path="/items/:id" element={<Page/>}></Route>
             <Route path="/profile" element={<Profile/>}></Route>
-            <Route path="/test" element={<Test/>}></Route>
             {/*protected routes
             <Route element={<RequireAuth allowedRoles={['user']}/>}>
               <Route path="/profile" element={<Profile/>}></Route>
@@ -48,6 +64,7 @@ function App() {
           </Route>
         </Routes>
       </div>
+      </userContext.Provider>
     </authContext.Provider>
   );
 }

@@ -1,39 +1,18 @@
 import axios from 'axios';
 import React from 'react';
 import { useEffect, useState, useContext } from "react";
-import { authContext } from '../../contexts/AuthContext';
+import { authContext } from '../../contexts/Contexts';
+import { useAxios } from '../../hooks/useAxios';
 
 function Profile() {
   const {isLogged, setIsLogged} = useContext(authContext);
-  // const [data, setData] = useState({
-  //   name: '',
-  // })
-  const [login, setLogin] = useState(false);
+  const url = sessionStorage.getItem('id');
+  const {response, loading} = useAxios(`/users/${url}`);
 
   useEffect(() => {
-    const item = sessionStorage.getItem('token');
-    if(item) {
-      setLogin(true);
-    }
+    console.log(response);
+    console.log(sessionStorage.getItem('id'));
   }, [])
-  
-
-  // const getUser = () => {
-  //   axios.get(`http://localhost:5000/users/${user.id}`)
-  //     .then((res) => {
-  //       console.log(res);
-  //       console.log(res.data.name);
-  //       // const getName = res.data.name
-  //       // setData(getName);
-  //       // console.log(data.name);
-  //     })
-  //     .catch(err => console.log(err));
-  // }
-
-  // useEffect(() => {
-  //   // getUser()
-  //   // console.log(user.id)
-  // })
 
   return (
     isLogged

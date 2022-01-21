@@ -51,7 +51,7 @@ authRouter.post('/login', async (req,res) => {
   //Check if email exists in database
   const email = await User.findOne({email: req.body.email});
   const user = await User.findOne({username: req.body.username});
-  if(!user && !email) {
+  if(!user) {
     return res.status(400).json({message: 'Username or email is incorrect'});
   }
 

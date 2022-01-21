@@ -1,8 +1,7 @@
 import React, { useRef, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import UserContext from '../../contexts/UserContext';
-import { authContext } from '../../contexts/AuthContext';
+import { authContext } from '../../contexts/Contexts';
 
 function Signin() {
   const {isLogged, setIsLogged} = useContext(authContext);
@@ -30,7 +29,7 @@ function Signin() {
     e.preventDefault();
     try{
       const response = await axios.post('http://localhost:5000/login',
-        JSON.stringify({'user': username, password}),
+        JSON.stringify({'username': username, password}),
         {
           headers: {'Content-Type': 'application/json'}
         }
@@ -41,8 +40,8 @@ function Signin() {
       const roles = response.data.role;
       const token = response.data.token;
       // setAuth({ user, roles, password, token, id})
-      setUserName('');
-      setPassword('');
+      // setUserName('');
+      // setPassword('');
       navigate(from, { replace: true });
       setIsLogged(true);
       sessionStorage.setItem('user', username);
@@ -50,7 +49,7 @@ function Signin() {
       sessionStorage.setItem('id', id);
       sessionStorage.setItem('roles', roles);
       sessionStorage.setItem('isLogged', true);
-      console.log(response.data[0]);
+      // console.log(response.data[0]);
       // var items = [];
       // for(var i = 0; i < response.data.length; i++) {
       //   items.push(response.data[i]);
