@@ -38,6 +38,7 @@ function Navbar() {
 
   const logoutUser = () => {
     setIsLogged(false);
+    sessionStorage.clear();
   }
 
   return (
