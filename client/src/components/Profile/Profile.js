@@ -8,10 +8,20 @@ function Profile() {
   const {isLogged, setIsLogged} = useContext(authContext);
   const url = sessionStorage.getItem('id');
   const {response, loading} = useAxios(`/users/${url}`);
+  const [user, setUser] = useState({});
+
+  const getUser = () => {
+    axios.get(`/users/${url}`)
+      .then((res) => {
+        const currentUser = res.data;
+        setUser(currentUser)
+      })
+      .catch(err => console.log(err));
+  }
 
   useEffect(() => {
     console.log(response);
-    console.log(sessionStorage.getItem('id'));
+    getUser();
   }, [])
 
   return (

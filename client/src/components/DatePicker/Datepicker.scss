@@ -1,0 +1,58 @@
+.date-container{
+  width: 380px;
+  // height: 300px;
+  // background-color: blue;
+  // overflow: hidden;
+
+  p{
+    text-align: center;
+  }
+
+  .date-header{
+    // width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .date-weekdays{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    align-items: center;
+  }
+
+  .date-days{
+    // width: 100%;
+    .days-content{
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      // line-height: 20px;
+
+      .day{
+        border-radius: 50px;
+
+
+        p{
+          
+        
+        }
+      }
+
+      .day:hover{
+        outline: solid 1px black;
+        
+      }
+
+      
+
+      .clicked{
+
+      }
+
+      .unclick{
+        // color: blue;
+      }
+    }
+  }
+
+}
+

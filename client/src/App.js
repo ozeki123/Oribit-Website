@@ -14,17 +14,23 @@ import Profile from './components/Profile/Profile';
 import Signup from './components/Signup/Signup';
 import Signin from './components/Signin/Signin';
 import Layout from './components/Layout/Layout';
+import Payment from './components/Payment/Payment';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import { authContext } from './contexts/Contexts';
 import { userContext } from './contexts/Contexts';
 import useLocalStorage from './hooks/useLocalStorage';
 import { useAxios } from './hooks/useAxios';
+import {Elements} from '@stripe/react-stripe-js';
+import { loadStripe } from "@stripe/stripe-js";
+import PaymentConfirm from './components/Payment/PaymentConfirm/PaymentConfirm';
+import OrderDetail from './components/OrderDetail/OrderDetail';
+import DatePicker from './components/DatePicker/Datepicker';
 
 function App() { 
   const [isLogged, setIsLogged] = useLocalStorage('isLogged', false);
   const [user, setUser] = useLocalStorage();
 
-
+  const stripePromise = loadStripe('pk_test_51KKekXGDtVX5wZUmoem8hYWx1aOdupnY8mgqvCfecD0Hn8iu4BfMSgLDuhKuwwR9ngCdXf73GCh7XM5rPTN9F19000nNQl8J1j')
 
   // const { response, loading, error } = useAxios({
   //   method: 'GET',
@@ -46,24 +52,29 @@ function App() {
     <authContext.Provider value={{isLogged, setIsLogged}}>
       <userContext.Provider>
         <div className="App">
-        <Navbar/>
-        <Routes>
-          <Route path="/" element={<Layout/>}>
-            {/*public routes*/}
-            <Route path="/login" element={<Signin/>}></Route>
-            <Route path="/register" element={<Signup/>}></Route>
-            <Route path="/host" element={<Host/>}></Route>
-            <Route path="/home" element={<Home/>}></Route>
-            <Route path="/items" element={<Items/>}></Route>
-            <Route path="/items/:id" element={<Page/>}></Route>
-            <Route path="/profile" element={<Profile/>}></Route>
-            {/*protected routes
-            <Route element={<RequireAuth allowedRoles={['user']}/>}>
-              <Route path="/profile" element={<Profile/>}></Route>
-            </Route>*/}
-          </Route>
-        </Routes>
-      </div>
+              <Navbar/>
+              <Routes>
+                <Route path="/" element={<Layout/>}>
+                  {/*public routes*/}
+                  <Route path="/login" element={<Signin/>}></Route>
+                  <Route path="/register" element={<Signup/>}></Route>
+                  <Route path="/host" element={<Host/>}></Route>
+                  <Route path="/home" element={<Home/>}></Route>
+                  <Route path="/items" element={<Items/>}></Route>
+                  <Route path="/items/:id" element={<Page/>}></Route>
+                  <Route path="/profile" element={<Profile/>}></Route>
+                  <Route path="/order" element={<OrderDetail/>}></Route>
+                  <Route path="/payment" element={<Payment/>}></Route>
+                  <Route path="/confirm" element={<PaymentConfirm/>}></Route>
+                  <Route path='/datepicker' element={<DatePicker/>}></Route>
+                  {/*protected routes
+                  <Route element={<RequireAuth allowedRoles={['user']}/>}>
+                    <Route path="/profile" element={<Profile/>}></Route>
+                  </Route>*/}
+                </Route>
+              </Routes>
+            </div>
+        
       </userContext.Provider>
     </authContext.Provider>
   );
