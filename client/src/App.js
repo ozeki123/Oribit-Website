@@ -25,6 +25,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import PaymentConfirm from './components/Payment/PaymentConfirm/PaymentConfirm';
 import OrderDetail from './components/OrderDetail/OrderDetail';
 import DatePicker from './components/DatePicker/Datepicker';
+import GroupFinder from './components/GroupFinder/GroupFinder';
 
 function App() { 
   const [isLogged, setIsLogged] = useLocalStorage('isLogged', false);
@@ -67,6 +68,7 @@ function App() {
                   <Route path="/payment" element={<Payment/>}></Route>
                   <Route path="/confirm" element={<PaymentConfirm/>}></Route>
                   <Route path='/datepicker' element={<DatePicker/>}></Route>
+                  <Route path='/groupfinder' element={<GroupFinder/>}></Route>
                   {/*protected routes
                   <Route element={<RequireAuth allowedRoles={['user']}/>}>
                     <Route path="/profile" element={<Profile/>}></Route>

@@ -61,7 +61,6 @@ function DatePicker() {
   const onClickDate = (event) => {
     setClickedDate(event.target);
     console.log(event.target);
-    
     // console.log(clickedDate);
   }
 

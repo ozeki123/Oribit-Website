@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import itemRouter from './routes/item.js';
 import authRouter from './routes/auth.js';
 import userRouter from './routes/user.js';
+import groupRouter from './routes/group.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
@@ -29,6 +30,7 @@ app.use(express.json());
 app.use('/items', itemRouter);
 app.use('/', authRouter);
 app.use('/users', userRouter);
+app.use('/groups', groupRouter);
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
