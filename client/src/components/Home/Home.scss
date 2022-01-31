@@ -1,0 +1,52 @@
+.home-container{
+  height: 100vh;
+  width: 100vw;
+  background-image: url('/assets/images/orbit.jpg');
+  background-size: cover;
+  background-position: top center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  .home-section{
+    height: 85%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+      .home-contents{
+        height: 175px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+        color: white;
+        
+        h1{
+          font-size: 50px;  
+          background: -webkit-linear-gradient(45deg, #00FF85, #3E6EE9 );
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+    
+        input{
+          height: 40px;
+          width: 25%;
+          padding: 0 20px;
+          background: none;
+          color: white;
+          border: 1px solid white;
+          outline: none;
+          border-radius: 3px;
+        }
+        ::placeholder{
+          color: white;
+        }
+      }
+    
+      
+    
+  }
+}

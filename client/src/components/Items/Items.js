@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Item from './Item/Item';
 import Page from '../Page/Page';
+import './Items.scss';
 
 function Items() {
   const [items, setItems] = useState([]);
@@ -39,26 +40,44 @@ function Items() {
   }, [])
 
     return(
-      <div>
-        <input type="text" placeholder='Enter address here' onChange={(e) => searchItems(e.target.value)}></input>
-        {searchInput.length > 1? (
-          filteredResults.map((item, index) => {
-          // console.log(item);
-          return (
-            <div key={item._id}>
-              <Item id={item._id} title={item.title} price={item.price}/>
-            </div>
-          )
-          })
-        ) : (
-          items.map((item) => {
-            return(
-              <div key={item._id}>
-                <Item id={item._id} title={item.title} price={item.price}/>
+      <div className="items-container">
+        <main className="items-content">
+          <section>
+            <h1>12 Courts Near You</h1>
+            <div className="items-input">
+              <input type="text" placeholder='Enter address here' onChange={(e) => searchItems(e.target.value)}></input>
+              <div className="input-left">
+                <input type="text" placeholder='YYYY/MM/DD' ></input>
+                <input type="text" placeholder='1 Guest' ></input>
               </div>
-            )
-          })
-        )}
+            </div>
+            <ul>
+              <button>Popular</button>
+              <button>Price</button>
+              <button>Rating</button>
+              <button>Sport</button>
+            </ul>
+              {searchInput.length > 1? (
+                filteredResults.map((item, index) => {
+                // console.log(item);
+                return (
+                  <div key={item._id}>
+                    <Item id={item._id} title={item.title} price={item.price}/>
+                  </div>
+                )
+                })
+              ) : (
+                items.map((item) => {
+                  return(
+                    <div key={item._id}>
+                      <Item id={item._id} title={item.title} price={item.price}/>
+                    </div>
+                  )
+                })
+              )}
+          </section>
+          
+        </main>
       </div>
 
       

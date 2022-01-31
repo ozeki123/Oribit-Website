@@ -1,0 +1,18 @@
+.items-container{
+  width: 100vw;
+
+  .items-content{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .items-input{
+      display: flex;
+      input{
+        height: 35px;
+      }
+    }
+  }
+}

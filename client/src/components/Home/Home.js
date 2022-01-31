@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useContext, useEffect, useState } from "react";
 import { authContext } from '../../contexts/Contexts';
+import './Home.scss';
 
 function Home() {
   const [login, setLogin] = useState(false);
@@ -23,15 +24,34 @@ function Home() {
 
   return (
     //if user is logged in
-    isLogged
-      ?<div>
-        <h1>You are logged in</h1>
-        <h1>{sessionStorage.getItem('token')}</h1>
-      </div>
-    //if user is not logged in
-      :<div>
-        <h1>You are not logged in</h1>
-      </div>
+    <Fragment>
+      <main className="home-container">
+        <section className="home-section">
+          <article className="home-contents">
+            <div className="home-header">
+              <h1>orbit</h1>
+              <p>スポーツの楽しみをいつでも、どこでも。</p>
+            </div>
+            
+            <input placeholder="Enter location here"/>
+            {
+              // isLogged
+              //   ?<div>
+              //     <p>You are logged in</p>
+              //     <p>{sessionStorage.getItem('token')}</p>
+              //   </div>
+              //   :<div>
+              //     <p>You are not logged in</p>
+              //   </div>
+            }
+          </article> 
+        </section>
+      </main>
+      <section>
+      </section>
+    </Fragment>
+    
+ 
   )
 }
 

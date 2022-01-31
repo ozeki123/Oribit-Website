@@ -8,8 +8,6 @@ import Page from './components/Page/Page';
 import Host from './components/Host/Host';
 import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
-import Register from './components/Register/Register';
-import Login from './components/Login/Login';
 import Profile from './components/Profile/Profile';
 import Signup from './components/Signup/Signup';
 import Signin from './components/Signin/Signin';
@@ -26,6 +24,9 @@ import PaymentConfirm from './components/Payment/PaymentConfirm/PaymentConfirm';
 import OrderDetail from './components/OrderDetail/OrderDetail';
 import DatePicker from './components/DatePicker/Datepicker';
 import GroupFinder from './components/GroupFinder/GroupFinder';
+import CreateGroup from './components/CreateGroup/CreateGroup';
+import FileUpload from './components/FileUpload/FileUpload';
+import Map from './components/Map/Map';
 
 function App() { 
   const [isLogged, setIsLogged] = useLocalStorage('isLogged', false);
@@ -55,12 +56,13 @@ function App() {
         <div className="App">
               <Navbar/>
               <Routes>
-                <Route path="/" element={<Layout/>}>
+                <Route path="/home" element={<Home/>}></Route>
+                <Route element={<Layout/>}>
                   {/*public routes*/}
                   <Route path="/login" element={<Signin/>}></Route>
                   <Route path="/register" element={<Signup/>}></Route>
                   <Route path="/host" element={<Host/>}></Route>
-                  <Route path="/home" element={<Home/>}></Route>
+                  
                   <Route path="/items" element={<Items/>}></Route>
                   <Route path="/items/:id" element={<Page/>}></Route>
                   <Route path="/profile" element={<Profile/>}></Route>
@@ -68,7 +70,10 @@ function App() {
                   <Route path="/payment" element={<Payment/>}></Route>
                   <Route path="/confirm" element={<PaymentConfirm/>}></Route>
                   <Route path='/datepicker' element={<DatePicker/>}></Route>
-                  <Route path='/groupfinder' element={<GroupFinder/>}></Route>
+                  <Route path='/groups' element={<GroupFinder/>}></Route>
+                  <Route path='/groups/create' element={<CreateGroup/>}></Route>
+                  <Route path='/map' element={<Map/>}></Route>
+                  <Route path='upload' element={<FileUpload/>}></Route>
                   {/*protected routes
                   <Route element={<RequireAuth allowedRoles={['user']}/>}>
                     <Route path="/profile" element={<Profile/>}></Route>
@@ -76,7 +81,6 @@ function App() {
                 </Route>
               </Routes>
             </div>
-        
       </userContext.Provider>
     </authContext.Provider>
   );

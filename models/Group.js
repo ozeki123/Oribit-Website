@@ -7,7 +7,7 @@ const Group = mongoose.Schema({
   },
   owner: {
     type: String,
-    required: true
+    // required: true
   },
   description: {
     type: String,

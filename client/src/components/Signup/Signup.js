@@ -106,7 +106,7 @@ function Signup () {
   }
 
   return (
-    <>
+    <div className="signup-container">
     {success ? (
       <section>
         <h1>Registration successful.</h1>
@@ -234,7 +234,7 @@ function Signup () {
       </p>
     </section>
         )}
-    </>
+    </div>
   )
 }
 
