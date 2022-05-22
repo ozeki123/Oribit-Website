@@ -1,52 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
 .home-container{
-  height: 100vh;
   width: 100vw;
-  background-image: url('/assets/images/orbit.jpg');
-  background-size: cover;
-  background-position: top center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  .home-section{
-    height: 85%;
+  max-width: 100%;
+  
+  .home-carousel{
+    box-sizing: border-box;
+    padding-bottom: 2.5vh;
+  }
+  .about-banner{
     width: 100%;
+    height: 35vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: rgb(49, 49, 49);
+    text-align: center;
+    font-family: 'Neue-Bold';
+    padding-top: 50px;
 
-      .home-contents{
-        height: 175px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
+    .banner-contents{
+      max-width: 100%;
+      width: 100%;
+      height: 100%;
+      h2{
+        font-size: 2rem;
+      }
+      h3{
+        color: rgb(167, 167, 167);
+        font-size: 1.3rem;
+      }
+      .banner-subtitle{
         width: 100%;
-        text-align: center;
-        color: white;
-        
-        h1{
-          font-size: 50px;  
-          background: -webkit-linear-gradient(45deg, #00FF85, #3E6EE9 );
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-    
+        position: relative;
+        top: 10px;
+        line-height: 40px;
+        letter-spacing: 2px;
+      }
+      .banner-input{
+        height: 100%;
+        width: 100%;
+        position: relative;
+        top: 60px;
         input{
-          height: 40px;
-          width: 25%;
-          padding: 0 20px;
-          background: none;
-          color: white;
-          border: 1px solid white;
-          outline: none;
-          border-radius: 3px;
-        }
-        ::placeholder{
-          color: white;
+          width: 28%;
+          border-radius: 30px;
+          border: none;
+          padding: 15px 30px;
+          font-size: 1rem;
         }
       }
+    }
     
-      
     
   }
 }

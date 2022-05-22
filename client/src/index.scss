@@ -1,13 +1,66 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+// @font-face {
+//   font-family: "Gilroy-bold";
+//   src: url("./fonts/Gilroy-ExtraBold.otf")
+// }
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
+@font-face {
+  font-family: 'MinSans';
+  src: url(./fonts/MinSans-Bold.ttf) font-weight-bold,
+       url(./fonts//MinSans-Medium.ttf) font-weight-normal
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'Neue-Bold';
+  src: url(./fonts/NeueHaasDisplay-Bold.eot);
+  src: url(./fonts/NeueHaasDisplay-Bold.woff) format("woff");
+  src: url(./fonts/NeueHaasDisplay-Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'Neue-Med';
+  src: url(./fonts/NeueHaasDisplay-Mediu.eot);
+  src: url(./fonts/NeueHaasDisplay-Mediu.woff) format("woff");
+  src: url(./fonts/NeueHaasDisplay-Mediu.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'Neue-Reg';
+  src: url(./fonts/NeueHaasDisplay-Roman.eot);
+  src: url(./fonts/NeueHaasDisplay-Roman.woff) format("woff");
+  src: url(./fonts/NeueHaasDisplay-Roman.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'Neue-Bold';
+  src: url(./fonts/NeueHaasDisplay-Bold.eot);
+  src: url(./fonts/NeueHaasDisplay-Bold.woff) format("woff");
+  src: url(./fonts/NeueHaasDisplay-Bold.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: 'NotoSans';
+  src: url(./fonts/NotoSansJP-Regular-Alphabetic.eot);
+  src: url(./fonts/NotoSansJP-Regular-Alphabetic.woff) format("woff");
+  src: url(./fonts/NotoSansJP-Regular-Alphabetic.ttf) format("truetype");
+
+}
+
+@font-face {
+  font-family: 'Aileron-Bold';
+  src: url(./fonts/Aileron-Bold.otf);
+       
+}
+@font-face {
+  font-family: 'Aileron-Heavy';
+  src: url(./fonts/Aileron-Heavy.otf);
+       
+}
+@font-face {
+  font-family: 'Aileron-Black';
+  src: url(./fonts/Aileron-Black.otf);
+}
+@font-face {
+  font-family: 'Aileron-Light';
+  src: url(./fonts/Aileron-Light.otf);
 }

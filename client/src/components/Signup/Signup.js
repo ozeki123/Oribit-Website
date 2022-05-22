@@ -113,10 +113,9 @@ function Signup () {
         <Link to="/signin">Sign in</Link>
       </section>
     ) : (
-    <section>
-      
+    <section className="signup-contents">
       <h1>Sign up for Orbit</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="signup-form" onSubmit={handleSubmit}>
         <label htmlFor="name">
           Full Name
           <span className={validName ? "valid" : "hide"}>
@@ -144,7 +143,7 @@ function Signup () {
           Must only contain letters <br/>
         </p>
 
-        <label htmlFor="username">
+        <label className="user-label" htmlFor="username">
           Username
           <span className={validUser ? "valid" : "hide"}>
             <FontAwesomeIcon icon={faCheck}/>

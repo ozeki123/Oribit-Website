@@ -6,7 +6,8 @@ function DatePicker() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [activeDate, setActiveDate] = useState(new Date());
   const [dates, setDates] = useState([]);
-  const [clickedDate, setClickedDate] = useState(new Date());
+  const [clickedDate, setClickedDate] = useState('');
+  const [month, setMonth] = useState();
 
   let datesArray = [];
 
@@ -31,8 +32,7 @@ function DatePicker() {
     //get date of first day of current month
     const monthStart = startOfMonth(activeDate);
     const monthEnd = endOfMonth(activeDate);
-
-    // console.log(monthStart);
+    // setMonth(monthStart);
     // console.log(monthEnd);
 
     //get first day of the current month
@@ -59,18 +59,37 @@ function DatePicker() {
   };
 
   const onClickDate = (event) => {
-    setClickedDate(event.target);
-    console.log(event.target);
-    // console.log(clickedDate);
+    const tempDate = event.target.textContent;
+    setClickedDate(event.target.textContent);
+    formatDate(event.target.textContent);
   }
+
+  const formatDate = (date) => {
+    const day = parseInt(date) < 10 ? '0' + date : date;
+    console.log(day);
+    console.log(currentMonth);
+    console.log(day + ' ' + currentMonth);
+
+    
+  }
+
+  useEffect(() => {
+    // console.log(formatDate(clickedDate));
+    // console.log(currentMonth);
+  }, [clickedDate])
+
+
+
 
   getDates();
   // console.log(datesArray[0]);
 
   return (
     <div className="date-container">
-      <button onClick={() => setActiveDate(subMonths(activeDate, 1))}>prev</button>
-      <button onClick={() => setActiveDate(addMonths(activeDate, 1))}>next</button>
+      <div className="button-header">
+        <button onClick={() => setActiveDate(subMonths(activeDate, 1))}>prev</button>
+        <button onClick={() => setActiveDate(addMonths(activeDate, 1))}>next</button>
+      </div>
       <div className="date-header">
         <h3>{currentMonth}</h3>
       </div>

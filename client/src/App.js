@@ -27,6 +27,10 @@ import GroupFinder from './components/GroupFinder/GroupFinder';
 import CreateGroup from './components/CreateGroup/CreateGroup';
 import FileUpload from './components/FileUpload/FileUpload';
 import Map from './components/Map/Map';
+import Carousel from './components/Carousel/Carousel';
+import Featured from './components/Featured/Featured';
+import Landing from './components/Landing/Landing';
+import Nav from './components/Nav/Nav';
 
 function App() { 
   const [isLogged, setIsLogged] = useLocalStorage('isLogged', false);
@@ -54,16 +58,15 @@ function App() {
     <authContext.Provider value={{isLogged, setIsLogged}}>
       <userContext.Provider>
         <div className="App">
-              <Navbar/>
+              <Nav/>
               <Routes>
                 <Route path="/home" element={<Home/>}></Route>
-                <Route element={<Layout/>}>
+                <Route path="/register" element={<Signup/>}></Route>
+                <Route path="/items" element={<Items/>}></Route>
+                <Route>
                   {/*public routes*/}
                   <Route path="/login" element={<Signin/>}></Route>
-                  <Route path="/register" element={<Signup/>}></Route>
                   <Route path="/host" element={<Host/>}></Route>
-                  
-                  <Route path="/items" element={<Items/>}></Route>
                   <Route path="/items/:id" element={<Page/>}></Route>
                   <Route path="/profile" element={<Profile/>}></Route>
                   <Route path="/order" element={<OrderDetail/>}></Route>
@@ -73,7 +76,10 @@ function App() {
                   <Route path='/groups' element={<GroupFinder/>}></Route>
                   <Route path='/groups/create' element={<CreateGroup/>}></Route>
                   <Route path='/map' element={<Map/>}></Route>
-                  <Route path='upload' element={<FileUpload/>}></Route>
+                  <Route path='/upload' element={<FileUpload/>}></Route>
+                  <Route path='/carousel' element={<Carousel/>}></Route>
+                  <Route path='/featured' element={<Featured/>}></Route>
+                  <Route path='/landing' element={<Landing/>}></Route>
                   {/*protected routes
                   <Route element={<RequireAuth allowedRoles={['user']}/>}>
                     <Route path="/profile" element={<Profile/>}></Route>

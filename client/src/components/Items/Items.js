@@ -42,7 +42,7 @@ function Items() {
     return(
       <div className="items-container">
         <main className="items-content">
-          <section>
+          <section className="items-section">
             <h1>12 Courts Near You</h1>
             <div className="items-input">
               <input type="text" placeholder='Enter address here' onChange={(e) => searchItems(e.target.value)}></input>
@@ -57,26 +57,31 @@ function Items() {
               <button>Rating</button>
               <button>Sport</button>
             </ul>
-              {searchInput.length > 1? (
-                filteredResults.map((item, index) => {
-                // console.log(item);
-                return (
-                  <div key={item._id}>
-                    <Item id={item._id} title={item.title} price={item.price}/>
-                  </div>
-                )
-                })
-              ) : (
-                items.map((item) => {
-                  return(
+              <div className="item-results">
+                {searchInput.length > 1? (
+                  filteredResults.map((item, index) => {
+                  // console.log(item);
+                  return (
                     <div key={item._id}>
                       <Item id={item._id} title={item.title} price={item.price}/>
                     </div>
                   )
-                })
-              )}
+                  })
+                ) : (
+                  items.map((item) => {
+                    return(
+                      <div key={item._id}>
+                        <Item id={item._id} title={item.title} price={item.price}/>
+                      </div>
+                    )
+                  })
+                )}
+              </div>
+              
           </section>
-          
+          <div className="map-image">
+            map
+          </div>
         </main>
       </div>
 
