@@ -30,6 +30,32 @@
         filter: contrast(1.05)
       }
     }
+    .event-popup{
+      position: absolute;
+      height: 200px;
+      width: 200px;
+      background: #ff2525;
+      border-radius: 150px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      right: 138px;
+      color: white;
+      bottom: 0;
+      transform: translateY(102px);
+      .event-contents{
+        font-family: 'Noto Sans JP', sans-serif;
+        p, span{
+          font-size: 15px;
+          font-weight: 200;
+        }
+        .number{
+          font-size:30px;
+          font-weight: 700;
+        }
+      }
+    }
     
   }
   
@@ -40,6 +66,7 @@
     .category-contents{
       height: 100%;
       width: 100%;
+      overflow: hidden;
       display: grid;
       grid-template-rows: 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
@@ -77,10 +104,10 @@
         text-align: center;
         color: white;
         letter-spacing: 1px;
-        transition: transform 0.3s ease-in-out;
+        transition: transform 0.3s ease-out;
       }
       .category:hover {
-        transform: scale(0.98);
+        transform: scale(0.97);
         cursor: pointer;
       }
     }
@@ -136,6 +163,30 @@
     
     
   }
+
+  .gallery-image{
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 15px;
+
+    img{
+      height: 100%;
+      width: 100%;
+      filter: brightness(95%);
+      transition: transform 0.4s ease-out;
+      transform: scale(1.05);
+      border-radius: 15px;
+    }
+  }
+
+  .gallery-image:hover img{
+    -webkit-transform:scale(1);
+    border-radius: 15px;
+    cursor: pointer;
+  }
   .landing-gallery{
     height: 100%;
     width: 67%;
@@ -150,17 +201,18 @@
         grid-template-rows: 1fr;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-column-gap: 2.2%;
-        
         .gallery-item{
           width: 100%;
+          max-width: 100%;
           height: 100%;
           position: relative;
           display: flex;
           flex-direction: column;
           justify-content: center;
-
+          overflow: hidden;
           .item-text{
             position: absolute;
+            pointer-events:none;
             height: 85%;
             display: flex;
             flex-direction: column;
@@ -185,11 +237,15 @@
             }
           }
 
-          img{
-            width: 100%;
-            filter: brightness(95%);
-          }
+          
+
+
+          
+
+          
+          
         }
+        
 
         .gallery-label{
           width: 100%;
@@ -204,6 +260,83 @@
         
       }
       
+    }
+  }
+  .section-services{
+    width: 100%;
+    margin-top: 40px;
+    .service-gallery{
+      width: 100%;
+      max-width: 100%;
+      margin-top: 35px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-column-gap: 2.2%;
+      .service-item{
+        width: 100%;
+        position: relative;
+        img{
+          width: 100%;
+          border-radius: 15px;
+          filter: brightness(70%);
+        }
+        .service-title{
+          z-index: 1000;
+          position: absolute;
+          top: 100px;
+          left: 40px;
+          color: white;
+          h5{
+            font-family: 'Aileron';
+            font-weight: 100;
+            text-transform: uppercase;
+            letter-spacing: 1.3px;
+            font-size: 15px;
+          }
+          h2{
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 700;
+            font-size: 26px;
+          }
+        }
+      }
+    }
+  }
+  hr{
+    margin-top: 150px;
+    width: 100%;
+    
+    color: white;
+  }
+  .section-footer{
+    margin-top: 40px;
+    height: 250px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #444444;
+    .footer-left{
+      width: 500px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p{
+        font-size: 14px;
+        font-family: 'Noto Sans JP', sans-serif;
+      }
+    }
+    .footer-right{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      font-family: 'Aileron';
+      h2{
+        font-size: 40px;
+        font-weight: 400;
+        letter-spacing: -2px;
+      }
     }
   }
 }

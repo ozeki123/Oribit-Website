@@ -86,42 +86,45 @@ function DatePicker() {
 
   return (
     <div className="date-container">
-      <div className="button-header">
-        <button onClick={() => setActiveDate(subMonths(activeDate, 1))}>prev</button>
-        <button onClick={() => setActiveDate(addMonths(activeDate, 1))}>next</button>
+      <div className="datepicker-wrapper">
+        <div className="button-header">
+          <button onClick={() => setActiveDate(subMonths(activeDate, 1))}>prev</button>
+          <button onClick={() => setActiveDate(addMonths(activeDate, 1))}>next</button>
+        </div>
+        <div className="date-header">
+          <h3>{currentMonth}</h3>
+        </div>
+        <div className="date-weekdays">
+          {
+            days.map(day => {
+              return (
+                <p>{day}</p>
+              )
+            })
+          }
+        </div>
+        <div className="date-days">
+          {
+            datesArray.map((date, index) => {
+              return(
+                <div className="days-content"key={index}>
+                {
+                  date.map((subdate) => {
+                    return(
+                      <div className="day">
+                        <p className={clickedDate ? 'clicked' : 'unclick'} onClick={onClickDate}>{subdate}</p>
+                      </div>
+                    )
+                  })
+                }
+                  
+                </div>
+              )
+            })
+          }
+        </div>
       </div>
-      <div className="date-header">
-        <h3>{currentMonth}</h3>
-      </div>
-      <div className="date-weekdays">
-        {
-          days.map(day => {
-            return (
-              <p>{day}</p>
-            )
-          })
-        }
-      </div>
-      <div className="date-days">
-        {
-          datesArray.map((date, index) => {
-            return(
-              <div className="days-content"key={index}>
-              {
-                date.map((subdate) => {
-                  return(
-                    <div className="day">
-                      <p className={clickedDate ? 'clicked' : 'unclick'} onClick={onClickDate}>{subdate}</p>
-                    </div>
-                  )
-                })
-              }
-                
-              </div>
-            )
-          })
-        }
-      </div>
+      
     </div>
   )
 }

@@ -31,6 +31,7 @@ import Carousel from './components/Carousel/Carousel';
 import Featured from './components/Featured/Featured';
 import Landing from './components/Landing/Landing';
 import Nav from './components/Nav/Nav';
+import { Details } from './components/Details/Details';
 
 function App() { 
   const [isLogged, setIsLogged] = useLocalStorage('isLogged', false);
@@ -80,6 +81,7 @@ function App() {
                   <Route path='/carousel' element={<Carousel/>}></Route>
                   <Route path='/featured' element={<Featured/>}></Route>
                   <Route path='/landing' element={<Landing/>}></Route>
+                  <Route path='/details' element={<Details/>}></Route>
                   {/*protected routes
                   <Route element={<RequireAuth allowedRoles={['user']}/>}>
                     <Route path="/profile" element={<Profile/>}></Route>

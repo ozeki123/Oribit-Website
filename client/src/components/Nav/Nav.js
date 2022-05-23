@@ -10,7 +10,7 @@ const Nav = () => {
       <nav>
         <ul className="navbar-contents">
           <div className="nav-left">
-            <h1>Shinka</h1>
+            <h1>Shinpo</h1>
             <li><img src={ballIcon}/><span>コートを探す</span></li>
             <li><img src={groupIcon}/><span>グループを探す</span></li>
             <li><img src={partnerIcon}/><span>パートナーになる</span></li>

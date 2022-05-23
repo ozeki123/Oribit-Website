@@ -4,6 +4,9 @@ import landingImage from '../../assets/images/shinka-bg.png';
 import featuredIcon from '../../assets/images/featured-icon.svg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import groupImage from '../../assets/images/group.jpg'
+import partnerImage from '../../assets/images/partner.jpg'
+import courtImage from '../../assets/images/court.jpg'
 
 const featuredData = {
   "items":[
@@ -41,9 +44,16 @@ const Landing = () => {
         <article className="landing-image">
           <img src={landingImage}/>
           <h1>
-            スポーツを日常生活に。 <br/>
+            スポーツをより快適に。 <br/>
             技術とスポーツを繋ぐアプリ。
           </h1>
+          <aside className="event-popup">
+            <div className="event-contents">
+              <p>限定イベント</p>
+              <p className="number">50%<span>オフ</span></p>
+              <p>開催中</p>
+            </div>
+          </aside>
         </article>
       </section>
       <section className="landing-categories">
@@ -97,7 +107,10 @@ const Landing = () => {
                         <h6>{item.location}</h6>
                       </div>
                     </article>
-                    <img src={require('../../assets/images/' + item.image)} alt=""/>
+                    <div className="gallery-image">
+                      <img src={require('../../assets/images/' + item.image)} alt=""/>
+                    </div>
+                    
                   </article>
                 )
               })
@@ -131,14 +144,73 @@ const Landing = () => {
                         <h6>{item.location}</h6>
                       </div>
                     </article>
-                    <img src={require('../../assets/images/' + item.image)} alt=""/>
+                    <div className="gallery-image">
+                      <img src={require('../../assets/images/' + item.image)} alt=""/>
+                    </div>
                   </article>
                 )
               })
             }
           </div>
         </section>
-        
+        <section className="section-services">
+          <section className="section-header">
+            <article className="section-title">
+                <h4>Other services</h4>
+                <h2>その他サービス</h2>
+            </article>
+            <article className="section-all">
+              <p>全てを表示</p>
+              <div className="expand-icon">
+                <FontAwesomeIcon className="arrow-icon" icon={faArrowRightLong}/>
+              </div>
+            </article>
+          </section>
+          <section className="service-gallery">
+            <article className="service-item">
+              <div className="service-title">
+                <h5>Find a group</h5>
+                <h2>グループを探す</h2>
+              </div>
+              <div className="gallery-image">
+                <img src={groupImage}/>
+              </div>
+            </article>
+            <article className="service-item">
+              <div className="service-title">
+                <h5>Become a partner</h5>
+                <h2>パートナーになる</h2>
+              </div>
+              <div className="gallery-image">
+                <img src={partnerImage}/>
+              </div>
+              
+            </article>
+            <article className="service-item">
+              <div className="service-title">
+                <h5>Find a court</h5>
+                <h2>コートを探す</h2>
+              </div>
+              <div className="gallery-image">
+                <img src={courtImage}/>
+              </div>
+              
+            </article>
+          </section>
+        </section>
+        <hr/>
+        <section className="section-footer">
+            <article className="footer-left">
+              <p>shinkaについて</p>
+              <p>お問い合わせ</p>
+              <p>プライバシーポリシー</p>
+              <p>利用規約</p>
+            </article>
+            <article className="footer-right">
+              <h2>shinpo</h2>
+              <p>© Andrew Ozeki. All Rights Reserved</p>
+            </article>
+        </section>
       </section>
     </main>
     
