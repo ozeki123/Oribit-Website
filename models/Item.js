@@ -5,22 +5,31 @@ const Item = mongoose.Schema({
         type: String,
         required: true
     },
-    // price: {
-    //     type: Number,
-    //     required: true,
-    // },
-    // location: {
-    //     type: String,
-    //     required: true
-    // },
+    price: {
+        type: Number,
+        // required: true,
+    },
+    location: {
+        type: String,
+        // required: true
+    },
     owner: {
         type: String,
-        required: true,
+        // required: true,
     },
-    // description: {
-    //     type: String,
-    //     required: true
-    // },
+    age: {
+        type: Number
+    },
+    contact: {
+        type: String
+    },
+    image: {
+        type: String
+    },
+    description: {
+        type: String,
+        // required: true
+    },
     // rating: {
     //     type: Number
     // },

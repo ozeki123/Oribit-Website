@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { authContext } from '../../contexts/Contexts';
+import "./Signin.scss";
 
 function Signin() {
   const {isLogged, setIsLogged} = useContext(authContext);
@@ -69,37 +70,53 @@ function Signin() {
   }
 
   return (
-    <section>
-      <p ref={errRef} className={errMsg ? "error" : "offscreen"} aria-live="assertive">{errMsg}</p>
-      <h1>Sign In</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
-        <input 
-          type="text"
-          id="username"
-          ref={userRef}
-          autoComplete="off"
-          onChange={(e) => setUserName(e.target.value)}
-          value={username}
-          required
-        />
-        <label htmlFor="password">Password</label>
-        <input 
-          type="password"
-          id="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          required
-        />
-        <button>Sign in</button>
-      </form>
-      <p>
-        Need an account?
-        <span>
-          <Link to="/signup">Sign up</Link>
-        </span>
-      </p>
-    </section>
+    <div className="signin-container">
+      <div className="signin-wrapper">
+        <section className="signin-image"></section>
+        <section className='signin-section'>
+          <div className="signin-contents">
+            <form onSubmit={handleSubmit} className="signin-form">
+              <p ref={errRef} className={errMsg ? "error" : "offscreen"} aria-live="assertive">{errMsg}</p>
+              <h1>Sign In</h1>
+              <div className="signin-input">
+                <label htmlFor="username">Username</label>
+                <input 
+                  type="text"
+                  id="username"
+                  ref={userRef}
+                  autoComplete="off"
+                  onChange={(e) => setUserName(e.target.value)}
+                  value={username}
+                  required
+                />
+              </div>
+              <div className="signin-input">
+                <label htmlFor="password">Password</label>
+                <input 
+                  type="password"
+                  id="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                  required
+                />
+              </div>
+              
+              <button>Sign in</button>
+              <p>
+                Need an account?
+                <span>
+                  <Link to="/signup">Sign up</Link>
+                </span>
+              </p>
+            </form>
+          </div>
+          
+          
+        </section>
+      </div>
+      
+    </div>
+    
   )
 }
 

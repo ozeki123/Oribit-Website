@@ -1,36 +1,37 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react';
+import "./FileUpload.scss"
 
-const FileUpload = () => {
-  const [fileInput, setFileInput] = useState('');
-  const [selectedFile, setSelectedFile] = useState('');
+const FileUpload = ({setImageLink}) => {
+  const [image, setImage] = useState("");
+  const [url, setUrl] = useState("");
 
-  const handleChange = (e) => {
-    const file = e.target.files[0];
-  }
-
-  const handleUpload = ({ target }) => {
-    setFileInput(target.files[0]);
-  }
-
-  const handleSubmit = async (e) => {
+  const handleUpload = (e) => {
     e.preventDefault();
-    const formData = new FormData();
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "holo_images");
+    console.log("data", data)
 
-    formData.append("image", fileInput);
-
-    await axios.post("http://localhost:5000/api/image", formData)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
+    axios.post(
+      "https://api.cloudinary.com/v1_1/dphadpunl/image/upload", 
+      data
+      ).then((res) => {
+        console.log(res);
+        console.log(res.data.secure_url);
+        setUrl(res.data.secure_url);
+      })
+      .catch(err => console.log(err));
   }
-
-  console.log(fileInput)
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="file" name="file" accept="image/*" onChange={handleUpload}/>
-      <button>Upload Image</button>
+    <>
+      <form className="upload-container" onSubmit={handleUpload}>
+        <input type="file" name="file" accept="image/*" onChange={(e) => setImage(e.target.files[0])}/>
+        <button type="submit">Upload Image</button>
       </form>
+    </>
+    
   )
 }
 

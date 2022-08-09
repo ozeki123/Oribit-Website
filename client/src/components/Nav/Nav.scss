@@ -1,76 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+@import '../../styles/colors.scss';
+.navbar{
+  width: 100vw;
+  background-color: white;
+  position: fixed;
+  z-index: 999;
+}
 
 .navbar-container{
   width: 100%;
-  height: 10vh;
-  background-color: #F8F8F8;
-  nav{
-    width: 100%;
-    height: 100%;
+  height: 11vh;
+  display: flex;
+  justify-content: center;
+  z-index: 99;
+  
     .navbar-contents{
-      width: 67%;
+      width: 82.8%;
       height: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin: 0 auto;
       
       h1{
         text-transform: lowercase;
-        font-family: 'Aileron-Heavy';
-        font-size: 38px;
+        font-family: 'Mono-Reg';
+        font-size: 43px;
         letter-spacing: -0.8px;
-        color: #ff2525;
-      }
-      li{
-        list-style: none;
-        font-family: 'Noto Sans JP', sans-serif;
-        font-weight: 700;
-        letter-spacing: 0.3px;
-        font-size: 15px;
-        color: #454545;
-        display: flex;
-        align-items: center;
-        img{
-          height: 17px;
-        }
-      }
-      .nav-left{
-        width: 50%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        li{
-          text-transform: uppercase;
-          img{
-          }
-          span{
-            position: relative;
-            left: 10px;
-          }
-        }
-      }
-      .nav-right{
-        height: 100%;
-        width: 12%;
-        justify-content: space-between;
-        display: flex;
-        align-items: center;
-
-        li{
-          &:last-child{
-            width: 90px;
-            height: 30px;
-            background-color: #f53434;
-            color: white;
-            border-radius: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-        }
+        color: #444CEF;
+        align-items: flex-end;
       }
     }
   }
   
-}

@@ -1,88 +1,106 @@
-// .carousel-container{
-//   height: 100vh;
-//   width: 120vw;
-//   background-color: red;
-//   overflow: hidden;
-//   .carousel-contents{
-//     display: flex;
-//     justify-content: space-between;
-//     background-color: blue;
-//     height: 70%;
-//     width: 140%;
-//     .carousel-item{
-      
-//       width: 32%;
-//       height: 100%;
-//       background-color: yellow;
-//     }
-//   }
-// }
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap');
 
-.carousel-container{
-  height: 50%;
-  padding-top: 25px;
-  position: relative;
-  overflow-x: hidden;
-  // margin-top: 130px;
-
+.carousel{
+  height: 100%;
+  width: 100vw;
+  .carousel-section{
+    width: 105vw;
+    // max-width: 100vw;
+    height: 100%;
+    font-family: "Han-Reg";
+    .carousel-contents{
+      height: 100%;
+      .carousel-item{
+        height: 100%;
+        min-height: 100%;
+        .carousel-image{
+          height: 100%;
+          width: 97.5%;
+          img{
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            filter:contrast(105%);
+            transition: 0.3s ease;
+            &:hover{
+              transform: scale(1.01);
+            }
+          }
+        }
+        .item-details{
+          width: 98%;
+          margin: 6px auto;
+          .item-title{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            h3{
+              width: 80%;
+            }
+            p{
+              font-size: 19px;
+              font-weight: 300;
+              margin: 0 11px;
+            }
+            h3{
+              font-size: 1.7rem;
+              
+              font-weight: 400;
+              color: rgb(44, 44, 44);
+              letter-spacing: 0px;
+              line-height: 38px;
+            }
+          }
+          
+          .item-subtitle{
+            display: flex;
+            align-items: center;
+            margin: 10px 2px;
+            font-weight: 300;
+            
+            .ellipse{
+              width: 7px;
+              height: 7px;
+              background-color: #333cec;
+              border-radius: 3px;
+            }
+          }
+          .item-category{
+            margin: 0px 7px;
+            letter-spacing: 0px;
+            color: rgb(39, 39, 39);
+            font-size: 14px;
+            text-transform: uppercase;
+            font-family: "Aileron";
+          }
+        }
+      }
+    }
+    
+    
+  }
   .carousel-nav{
     width: 100%;
+    height: 15vh;
     display: flex;
-    justify-content: space-between;
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-    z-index: 1;
-    button{
-      height: 50px;
-      width: 50px;
-    }
-  }
-  
-  .carousel-layout{
-    width: 240%;
-    height: 100%;
-    margin: auto;
-    overflow-x: hidden;
-    
-    
-    .carousel-contents{
+    justify-content: center;
+    align-items: center;
+    .carousel-buttons{
+      width: 5%;
+      height: 10%;
       display: flex;
-      // justify-content: space-between;
-      position: relative;
-      transform: translate(-8%, -1%);
-      // right: 21px;
-      width: 155%;
-      .carousel-item{
-        display: inline-block;
-        padding: 10px;
-        // height: 100%;
-        width: 32.5%;
-        transition: 1s;
-        
-        img{
-          width: 100%;
-          border-radius: 20px;
-          box-shadow:4px 5px 10px rgba(119, 113, 197, 0.418);
-          
-        }
-        
-      }
-     
+      justify-content: space-between;
+      align-items: center;
     }
-  }
-
-  .carousel-position{
-    text-align: center;
-    .marker{
-      display: inline-block;
-      height: 12px;
-      width: 12px;
-      border-radius: 50%;
+    .ellipse{
+      width: 8px;
+      height: 8px;
+      border: 1px solid #444CEF;
+      border-radius: 6px;
+      z-index: 999;
       cursor: pointer;
-      background-color: #c4c4c4;
-      margin: 0px 5px 0px;
     }
   }
-  
 }

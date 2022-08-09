@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import FileUpload from '../FileUpload/FileUpload';
 import './Host.scss';
 
 function Host() {
@@ -7,6 +8,7 @@ function Host() {
     title: '',
     owner: ''
   });
+  const [imageLink, setImageLink] = useState("");
   // const [formValue, setFormValue] = useState({
   //   owner: '',
   //   title: '',
@@ -65,8 +67,8 @@ function Host() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="host-container">
+      <form className="host-form" onSubmit={handleSubmit}>
         <h1>Become a host</h1>
         <input 
           type="text" 

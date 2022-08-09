@@ -103,26 +103,29 @@ function DatePicker() {
             })
           }
         </div>
-        <div className="date-days">
-          {
-            datesArray.map((date, index) => {
-              return(
-                <div className="days-content"key={index}>
-                {
-                  date.map((subdate) => {
-                    return(
-                      <div className="day">
-                        <p className={clickedDate ? 'clicked' : 'unclick'} onClick={onClickDate}>{subdate}</p>
-                      </div>
-                    )
-                  })
-                }
-                  
-                </div>
-              )
-            })
-          }
+        <div className="dates-wrapper">
+          <div className="date-days">
+            {
+              datesArray.map((date, index) => {
+                return(
+                  <div className="days-content"key={index}>
+                  {
+                    date.map((subdate) => {
+                      return(
+                        <div className="day">
+                          <p className={clickedDate ? 'clicked' : 'unclick'} onClick={onClickDate}>{subdate}</p>
+                        </div>
+                      )
+                    })
+                  }
+                    
+                  </div>
+                )
+              })
+            }
+          </div>
         </div>
+        
       </div>
       
     </div>

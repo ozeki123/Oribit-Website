@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import './Signup.scss'
 import axios from 'axios';
+import loginImage from "../../assets/images/login-bg.jpg";
 
 const NAME_REGEX = /^[A-Za-z.\s_-]+$/;
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
@@ -113,125 +114,142 @@ function Signup () {
         <Link to="/signin">Sign in</Link>
       </section>
     ) : (
-    <section className="signup-contents">
-      <h1>Sign up for Orbit</h1>
-      <form className="signup-form" onSubmit={handleSubmit}>
-        <label htmlFor="name">
-          Full Name
-          <span className={validName ? "valid" : "hide"}>
-            <FontAwesomeIcon icon={faCheck}/>
-          </span>
-          <span className={validName || !name ? "hide" : "invalid"}>
-            <FontAwesomeIcon icon={faTimes}/>
-          </span>
-        </label>
-        <input
-          type="text"
-          id="name"
-          placeholder="Enter full name here"
-          autoComplete="off"
-          required
-          onChange={(e) => setName(e.target.value)}
-          aria-invalid={validName ? "false" : "true"}
-          aria-describedby="namenote"
-          onFocus={() => setNameFocus(true)}
-          onBlur={() => setNameFocus(false)}
-        />
-        <p id="namenote" className={nameFocus && name && 
-        !validName ? "instructions" : "offscreen"}>
-          <FontAwesomeIcon icon={faInfoCircle}/>
-          Must only contain letters <br/>
-        </p>
-
-        <label className="user-label" htmlFor="username">
-          Username
-          <span className={validUser ? "valid" : "hide"}>
-            <FontAwesomeIcon icon={faCheck}/>
-          </span>
-          <span className={validUser || !user ? "hide" : "invalid"}>
-            <FontAwesomeIcon icon={faTimes}/>
-          </span>
-        </label>
-        <input
-          type="text"
-          id="username"
-          placeholder="Enter username here"
-          ref={userRef}
-          autoComplete="off"
-          required
-          onChange={(e) => setUser(e.target.value)}
-          aria-invalid={validUser ? "false" : "true"}
-          aria-describedby="usernote"
-          onFocus={() => setUserFocus(true)}
-          onBlur={() => setUserFocus(false)}
-        />
-        <p id="usernote" className={userFocus && user && 
-        !validUser ? "instructions" : "offscreen"}>
-          <FontAwesomeIcon icon={faInfoCircle}/>
-          4 to 24 characters. <br/>
-          Must begin with a letter. <br/>
-          Alphanumeric characters, underscores, hyphens are allowed.
-        </p>
-
-        <label htmlFor="email">
-          Email address
-          <span className={validEmail ? "valid" : "hide"}>
-            <FontAwesomeIcon icon={faCheck}/>
-          </span>
-          <span className={validEmail || !email? "hide" : "invalid"}>
-            <FontAwesomeIcon icon={faTimes}/>
-          </span>
-        </label>
-        <input 
-          type="text"
-          id="email"
-          placeholder="Enter email address"
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          aria-invalid={validEmail ? "false" : "true"}
-          aria-describedby="emailnote"
-          onFocus={() => setEmailFocus(true)}
-          onBlur={() => setEmailFocus(false)}
-        />
-        <p id="emailnote" className={emailFocus && email && !validEmail ? "instructions": "offscreen"}>
-          <FontAwesomeIcon icon={faInfoCircle}/>
-          Invalid email address
-        </p>
-
-        <label htmlFor="password">
-          Password:
-          <span className={validPwd ? "valid:" : "hide"}>
-            <FontAwesomeIcon icon={faCheck}/>
-          </span>
-          <span className={validPwd || !pwd ? "hide" : "invalid"}>
-            <FontAwesomeIcon icon={faTimes}/>
-          </span>
-        </label>
-        <input
-          type="password"
-          id="password"
-          placeholder="Enter password"
-          onChange={(e) => setPwd(e.target.value)}
-          required
-          aria-invalid={validPwd ? "false" : "true"}
-          aria-describedby="pwdnote"
-          onFocus={() => setPwdFocus(true)}
-          onBlur={() => setPwdFocus(false)}
-        />
-        <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
-          <FontAwesomeIcon icon={faInfoCircle}/>
-          8 to 24 characters. <br/>
-          Must include uppercase and lowercase letters, a number, and a special character. <br/>
-        </p>
-        <button disabled={!validName || !validUser || !validPwd ? true : false}>Sign Up</button>
-      </form>
-      <p>
-          Already registered?
-          <span>
-            <Link to="/signin">Sign in</Link>
-          </span>
-      </p>
-    </section>
+    <div className="signup-wrapper">
+      <section className="signup-image"></section>
+      <section className="signup-contents">
+        
+        <form className="signup-form" onSubmit={handleSubmit} autocomplete="off">
+          <h1>Sign up for holo</h1>
+          <div className="signup-input">
+           <label htmlFor="name">
+            Name
+            <span className={validName ? "valid" : "hide"}>
+              <FontAwesomeIcon icon={faCheck}/>
+            </span>
+            <span className={validName || !name ? "hide" : "invalid"}>
+              <FontAwesomeIcon icon={faTimes}/>
+            </span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter full name here"
+              autoComplete="off"
+              required
+              onChange={(e) => setName(e.target.value)}
+              aria-invalid={validName ? "false" : "true"}
+              aria-describedby="namenote"
+              onFocus={() => setNameFocus(true)}
+              onBlur={() => setNameFocus(false)}
+              autocomplete="off"
+            />
+          </div>
+         
+          <p id="namenote" className={nameFocus && name && 
+          !validName ? "instructions" : "offscreen"}>
+            <FontAwesomeIcon icon={faInfoCircle}/>
+            Must only contain letters <br/>
+          </p>
+          <div className="signup-input">
+            <label className="user-label" htmlFor="username">
+              Username
+              <span className={validUser ? "valid" : "hide"}>
+                <FontAwesomeIcon icon={faCheck}/>
+              </span>
+              <span className={validUser || !user ? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes}/>
+              </span>
+            </label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Enter username here"
+              ref={userRef}
+              autoComplete="off"
+              required
+              onChange={(e) => setUser(e.target.value)}
+              aria-invalid={validUser ? "false" : "true"}
+              aria-describedby="usernote"
+              onFocus={() => setUserFocus(true)}
+              onBlur={() => setUserFocus(false)}
+            />
+          </div>
+          
+          <p id="usernote" className={userFocus && user && 
+          !validUser ? "instructions" : "offscreen"}>
+            <FontAwesomeIcon icon={faInfoCircle}/>
+            4 to 24 characters. <br/>
+            Must begin with a letter. <br/>
+            Alphanumeric characters, underscores, hyphens are allowed.
+          </p>
+          
+          <div className="signup-input">
+            <label htmlFor="email">
+              Email address
+              <span className={validEmail ? "valid" : "hide"}>
+                <FontAwesomeIcon icon={faCheck}/>
+              </span>
+              <span className={validEmail || !email? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes}/>
+              </span>
+            </label>
+            <input 
+              type="text"
+              id="email"
+              placeholder="Enter email address"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              aria-invalid={validEmail ? "false" : "true"}
+              aria-describedby="emailnote"
+              onFocus={() => setEmailFocus(true)}
+              onBlur={() => setEmailFocus(false)}
+            />
+          </div>
+          
+          <p id="emailnote" className={emailFocus && email && !validEmail ? "instructions": "offscreen"}>
+            <FontAwesomeIcon icon={faInfoCircle}/>
+            Invalid email address
+          </p>
+          <div className="signup-input">
+            <label htmlFor="password">
+              Password:
+              <span className={validPwd ? "valid:" : "hide"}>
+                <FontAwesomeIcon icon={faCheck}/>
+              </span>
+              <span className={validPwd || !pwd ? "hide" : "invalid"}>
+                <FontAwesomeIcon icon={faTimes}/>
+              </span>
+            </label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter password"
+              onChange={(e) => setPwd(e.target.value)}
+              required
+              aria-invalid={validPwd ? "false" : "true"}
+              aria-describedby="pwdnote"
+              onFocus={() => setPwdFocus(true)}
+              onBlur={() => setPwdFocus(false)}
+            />
+          </div>
+          
+          <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
+            <FontAwesomeIcon icon={faInfoCircle}/>
+            8 to 24 characters. <br/>
+            Must include uppercase and lowercase letters, a number, and a special character. <br/>
+          </p>
+          <button disabled={!validName || !validUser || !validPwd ? true : false}>Sign Up</button>
+          <p>
+            Already registered?
+            <span>
+              <Link to="/signin">Sign in</Link>
+            </span>
+          </p>
+        </form>
+        
+      </section>
+    </div>
+    
         )}
     </div>
   )

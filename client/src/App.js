@@ -1,12 +1,11 @@
-import { useState, useEffect, useMemo } from  'react';
+import React, { useState, useEffect, useMemo } from  'react';
 import axios from 'axios';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Outlet } from 'react-router-dom';
 import './App.scss';
 import Items from './components/Items/Items';
 import Item from './components/Items/Item/Item';
 import Page from './components/Page/Page';
 import Host from './components/Host/Host';
-import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import Signup from './components/Signup/Signup';
@@ -20,7 +19,6 @@ import useLocalStorage from './hooks/useLocalStorage';
 import { useAxios } from './hooks/useAxios';
 import {Elements} from '@stripe/react-stripe-js';
 import { loadStripe } from "@stripe/stripe-js";
-import PaymentConfirm from './components/Payment/PaymentConfirm/PaymentConfirm';
 import OrderDetail from './components/OrderDetail/OrderDetail';
 import DatePicker from './components/DatePicker/Datepicker';
 import GroupFinder from './components/GroupFinder/GroupFinder';
@@ -32,7 +30,22 @@ import Featured from './components/Featured/Featured';
 import Landing from './components/Landing/Landing';
 import Nav from './components/Nav/Nav';
 import { Details } from './components/Details/Details';
+import { Confirm } from './components/Confirm/Confirm';
+import LandingPage from './components/LandingPage/LandingPage';
+import Upload from './components/Upload/Upload';
+import PartnerForm from './components/PartnerForm/PartnerForm';
+import VerifyForm from './components/VerifyForm/VerifyForm';
+import PaymentForm from './components/PaymentForm/PaymentForm';
+export const NavLayout = () => {
+  return(
+    <React.Fragment>
+      <Nav/>
+      <Outlet/>
+    </React.Fragment>
 
+  )
+  
+}
 function App() { 
   const [isLogged, setIsLogged] = useLocalStorage('isLogged', false);
   const [user, setUser] = useLocalStorage();
@@ -47,6 +60,8 @@ function App() {
   //   }
   // })
 
+  
+
   useEffect(() => {
     console.log('Hello from App.js')
     console.log(sessionStorage.getItem('id'));
@@ -59,25 +74,31 @@ function App() {
     <authContext.Provider value={{isLogged, setIsLogged}}>
       <userContext.Provider>
         <div className="App">
-              <Nav/>
               <Routes>
-                <Route path="/home" element={<Home/>}></Route>
+                <Route element={<NavLayout/>}>
+                  <Route path="/home" element={<LandingPage/>}></Route>
+                  <Route path="/items" element={<Items/>}></Route>
+                  <Route path="/items/:id" element={<Page/>}></Route>
+                </Route>
+                
                 <Route path="/register" element={<Signup/>}></Route>
-                <Route path="/items" element={<Items/>}></Route>
+                
+                <Route path='/partner' element={<PartnerForm/>}></Route>
+                <Route path='/verify' element={<VerifyForm/>}></Route>
                 <Route>
                   {/*public routes*/}
                   <Route path="/login" element={<Signin/>}></Route>
                   <Route path="/host" element={<Host/>}></Route>
-                  <Route path="/items/:id" element={<Page/>}></Route>
+                  
                   <Route path="/profile" element={<Profile/>}></Route>
                   <Route path="/order" element={<OrderDetail/>}></Route>
-                  <Route path="/payment" element={<Payment/>}></Route>
-                  <Route path="/confirm" element={<PaymentConfirm/>}></Route>
+                  <Route path="/payment" element={<PaymentForm/>}></Route>
+                  <Route path="/confirm" element={<Confirm/>}></Route>
                   <Route path='/datepicker' element={<DatePicker/>}></Route>
                   <Route path='/groups' element={<GroupFinder/>}></Route>
                   <Route path='/groups/create' element={<CreateGroup/>}></Route>
                   <Route path='/map' element={<Map/>}></Route>
-                  <Route path='/upload' element={<FileUpload/>}></Route>
+                  
                   <Route path='/carousel' element={<Carousel/>}></Route>
                   <Route path='/featured' element={<Featured/>}></Route>
                   <Route path='/landing' element={<Landing/>}></Route>
