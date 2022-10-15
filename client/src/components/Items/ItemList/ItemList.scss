@@ -1,0 +1,102 @@
+.items-container{
+  height: 100%;
+  width: 100%;
+  .items-content{
+    height: 100%;
+    width: 100%;
+    // align-items: center;
+    font-family: "Gilroy-Regular", sans-serif;
+    .items-section{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .items-category{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 4vh;
+        padding-bottom: 4vh;
+        
+        .category-item{
+          
+          .item-content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "Inter", sans-serif;
+            svg{
+              width: 22px;
+              height: 22px;
+              path{
+                color: rgb(54, 54, 54);
+                
+              }
+              
+            }
+            p{
+              font-size: 0.87em;
+              font-weight: 500;
+              letter-spacing: 0.2px;
+              color: rgb(85, 84, 104);
+              padding-top: 1vh;
+            }
+          }
+        }
+      }
+    }
+
+    ul{
+      button{
+        border: none;
+        outline: none;
+        background-color: white;
+      }
+    }
+
+    .item-results{
+      width: 100%;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-column-gap: 1.3vw;
+      grid-row-gap: 4.5vh;
+      a{
+        text-decoration: none;
+      }
+      
+      .item-space{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .item-image{
+          width: 100%;
+          height: 100%;
+          position: relative;
+          img{
+            width: 100%;
+            height: 100%;
+            border-radius: 22px;
+          }
+          .price-tag{
+            position: absolute;
+            bottom: 20px;
+            border-radius: 35px;
+            font-size: 0.75em;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.959);
+            padding: 0.3vw 1.1vh; 
+            font-family: "Helvetica", sans-serif;
+            color: var(--color-primary);
+          }
+          
+        }
+        
+      }
+    }
+  }
+}

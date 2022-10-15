@@ -6,6 +6,9 @@
 @import '../src/styles/global.scss';
 @import '../src/styles/colors.scss';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('http://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro');
 
 $color-primary: #3269F5;
 
@@ -14,38 +17,204 @@ $color-primary: #3269F5;
   src: url(./fonts/MinSans-Bold.ttf) font-weight-bold,
        url(./fonts//MinSans-Medium.ttf) font-weight-normal
 }
-
 @font-face {
-  font-family: 'Neue-Bold';
-  src: url(./fonts/NeueHaasDisplay-Bold.eot);
-  src: url(./fonts/NeueHaasDisplay-Bold.woff) format("woff");
-  src: url(./fonts/NeueHaasDisplay-Bold.ttf) format("truetype");
+  font-family: 'TTCommonsPro';
+  src: url(./fonts/TTCommonsPro-Light.otf) format("opentype");
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'TTCommonsPro';
+  src: url(./fonts/TTCommonsPro-Regular.otf) format("opentype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'TTCommonsPro';
+  src: url(./fonts/TTCommonsPro-Medium.otf) format("opentype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'TTCommonsPro-Regular';
+  src: url(./fonts/TTCommonsPro-Regular.otf) format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TTCommonsPro-Light';
+  src: url(./fonts/TTCommonsPro-Light.otf) format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TTCommonsPro-Medium';
+  src: url(./fonts/TTCommonsPro-Medium.otf) format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TTCommonsPro-Semibold';
+  src: url(./fonts/TTCommonsPro-SemiBold.otf) format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TTCommonsPro-Bold';
+  src: url(./fonts/TTCommonsPro-Bold.otf) format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TTCommonsPro';
+  src: url(./fonts/TTCommonsPro-SemiBold.otf) format("opentype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'TTCommonsPro';
+  src: url(./fonts/TTCommonsPro-Bold.otf) format("opentype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'TTCommons';
+  src: url(./fonts/TTCommons-ExtraLight.otf) format("opentype");
+  font-weight: 200;
+}
+@font-face {
+  font-family: 'TTCommons-ExtraLight';
+  src: url(./fonts/TTCommons-ExtraLight.otf) format("opentype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'TTCommons';
+  src: url(./fonts/TTCommons-Light.otf) format("opentype");
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'TTCommons-Light';
+  src: url(./fonts/TTCommons-Light.otf) format("opentype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'TTCommons';
+  src: url(./fonts/TTCommons-Regular.otf) format("opentype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'TTCommons-Regular';
+  src: url(./fonts/TTCommons-Regular.otf) format("opentype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'TTCommons';
+  src: url(./fonts/TTCommons-Medium.otf) format("opentype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'TTCommons-Medium';
+  src: url(./fonts/TTCommons-Medium.otf) format("opentype");
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'TTCommons';
+  src: url(./fonts/TTCommons-DemiBold.otf) format("opentype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'TTCommons';
+  src: url(./fonts/TTCommons-Bold.otf) format("opentype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'OpenSauce';
+  src: url(./fonts/OpenSauceTwo-Light.ttf) format("truetype");
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'OpenSauce';
+  src: url(./fonts/OpenSauceTwo-Regular.ttf) format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'OpenSauce';
+  src: url(./fonts/OpenSauceTwo-Medium.ttf) format("truetype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'OpenSauce';
+  src: url(./fonts/OpenSauceTwo-SemiBold.ttf) format("truetype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'OpenSauce';
+  src: url(./fonts/OpenSauceTwo-Bold.ttf) format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'OpenSauce';
+  src: url(./fonts/OpenSauceTwo-ExtraBold.ttf) format("truetype");
+  font-weight: 800;
 }
 
 @font-face {
-  font-family: 'Neue-Med';
+  font-family: 'Neue';
+  src: url(./fonts/NeueHaasDisplay-Bold.eot);
+  src: url(./fonts/NeueHaasDisplay-Bold.woff) format("woff");
+  src: url(./fonts/NeueHaasDisplay-Bold.ttf) format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Neue';
   src: url(./fonts/NeueHaasDisplay-Mediu.eot);
   src: url(./fonts/NeueHaasDisplay-Mediu.woff) format("woff");
   src: url(./fonts/NeueHaasDisplay-Mediu.ttf) format("truetype");
+  font-weight: 500;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600&display=swap');
 
 @font-face {
-  font-family: 'Neue-Reg';
+  font-family: 'Neue';
   src: url(./fonts/NeueHaasDisplay-Roman.eot);
   src: url(./fonts/NeueHaasDisplay-Roman.woff) format("woff");
   src: url(./fonts/NeueHaasDisplay-Roman.ttf) format("truetype");
+  font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Neue-Bold';
-  src: url(./fonts/NeueHaasDisplay-Bold.eot);
-  src: url(./fonts/NeueHaasDisplay-Bold.woff) format("woff");
-  src: url(./fonts/NeueHaasDisplay-Bold.ttf) format("truetype");
+  font-family: 'Helvetica';
+  src: url(./fonts/HelveticaNeue-Thin.otf);
+  font-weight: 100;
 }
-
+@font-face {
+  font-family: 'Helvetica';
+  src: url(./fonts/HelveticaNeue-Ultralight.otf);
+  font-weight: 200;
+}
+@font-face {
+  font-family: 'Helvetica';
+  src: url(./fonts/HelveticaNeue-Light.otf);
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Helvetica';
+  src: url(./fonts/HelveticaNeue-Regular.otf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Helvetica';
+  src: url(./fonts/HelveticaNeue-Medium.otf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Helvetica';
+  src: url(./fonts/HelveticaNeue-Bold.otf);
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Helvetica';
+  src: url(./fonts/HelveticaNeue-Bold.otf);
+  font-weight: 700;
+}
 @font-face {
   font-family: 'Aileron-Bold';
   src: url(./fonts/Aileron-Bold.otf);

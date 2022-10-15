@@ -30,6 +30,7 @@ const Item = mongoose.Schema({
         type: String,
         // required: true
     },
+    
     // rating: {
     //     type: Number
     // },

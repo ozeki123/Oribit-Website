@@ -1,0 +1,204 @@
+.group-item{
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 10px 15px 5px #a1a5df18;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .group-item-contents{
+    width: 95%;
+    height: 85%;
+    display: flex;
+    
+  }
+  .item-image{
+    width: 27%;
+    height: 100%;
+
+    img{
+      width: 85%;
+      height: 100%;
+      border-radius: 10px;
+    }
+  }
+  .item-text{
+    width: 73%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .item-top{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .item-date{
+        font-size: 0.83em;
+        font-weight: 400;
+        color: rgb(114, 108, 139);
+      }
+      .item-user{
+        width: 80%;
+        display: flex;
+        
+        .user-info{
+          width: 100%;
+          padding-left: 0.35vw;
+          position: relative;
+          :first-child{
+            position: absolute;
+            top: 0.7vh;
+            font-size: 0.85em;
+            font-weight: 500;
+            letter-spacing: -0.4px;
+            color: #3e3e53;
+          }
+          :last-child{
+            font-size: 0.7em;
+            color: rgb(122, 118, 143);
+            padding-top: 0vh;
+            position: absolute;
+            bottom: 1vh;
+            font-weight: 300;
+            letter-spacing: 0px;
+          }
+          
+        }
+      }
+    }
+    
+    .group-info{
+      padding-top: 1.9vh;
+      padding-left: 0.3vw;
+      h3{
+        font-size: 0.98em;
+
+        color: #48486d;
+        letter-spacing: -0.3px;
+        font-weight: 500;
+      }
+      p{
+        font-size: 0.81em;
+        padding-top: 0.7vh;
+        line-height: 2.3vh;
+        color: rgb(123, 126, 158);
+        font-weight: 400;
+        letter-spacing: -0.1px;
+
+      }
+    }
+
+    .item-bottom{
+      height: 20%;
+      padding-left: 0.3vw;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1.8vh;
+      color: #9f9fc5;
+
+      .members:hover{
+        color: #444CEF;
+        
+        .members-icon{
+          border-color: #444CEF !important;
+        }
+      }
+      .hearts:hover{
+        color: #444CEF;
+        .hearts-icon{
+          border-color: #444CEF !important;
+        }
+      }
+
+      // .demographic:hover > .icon, p{
+      //   color: red;
+      // }
+
+      // .effect:hover > .icon{
+      //   color: blue;
+      // }
+      .effect{
+        transition: 0.5s ease;
+        
+      }
+      .effect:hover{
+        color: #444CEF;
+        .icon:hover{
+          border-color: #444CEF;
+        }
+      }
+
+      .bottom-left{
+        height: 100%;
+        width: 46%;
+        display: flex;
+        justify-content: space-between;
+        font-weight: 400;
+
+        // .bottom-left:hover > .demographic {
+        //   color: blue;
+        // }
+        .members, .hearts{
+          width: 100%;
+          display: flex;
+          
+          align-items: center;
+          transition: 0.5s;
+          
+          svg{
+            width: 1.1vw;
+          }
+          p{
+            padding-left: 0.3vw;
+            font-size: 0.81em;
+            letter-spacing: -0.4px;
+          }
+          .members-icon, .hearts-icon{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            border: 1px solid #b0b3e9;
+            border-radius: 25px;
+            transition: 0.5s all;
+            // transition: 0.5s ease;
+          }
+          
+          
+        }
+
+      }
+      .bottom-right{
+        width: 45%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.84em;
+        font-weight: 400;
+        letter-spacing: -0.3px;
+
+        a{
+          color: #9f9fc5;
+          width: 100%;
+
+        }
+        
+        .group-buttons{
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          
+          svg{
+            width: 19px;
+            padding-right: 0.15vw;
+          }
+        }
+      }
+    }
+  }
+}

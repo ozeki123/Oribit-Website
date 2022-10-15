@@ -45,8 +45,8 @@ const LandingPage = ({data = categoryData, courts = popularCourts.items, exp = p
           </div>
           <div className="banner-center">
             <div className="center-text">
-              <p>Browse Courts</p>
-              <h2>Browse our collection of rental courts and fields hosted by our partners</h2>
+              <p>Browse Spaces</p>
+              <h2>Browse our collection of sports spaces <br/>hosted by our partners</h2>
             </div>
 
            

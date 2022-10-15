@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   margin: 10.5vh 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Gilroy-Medium', sans-serif;
   overflow: none;
   .form-wrapper{
     height: 100%;
@@ -48,7 +48,6 @@
         background-repeat: no-repeat;
         background-position: right 1rem center;
         background-size: 1em;
-        font-family: 'Inter', sans-serif;
         font-weight: 500;
         font-size: 0.86em;
       }
@@ -66,20 +65,19 @@
       color: #4b4f58;
       height: 50px;
       border-radius: 8px;
-      border: 1px solid #f0f0f1;
-      background-color: #f0f0f1;
+      border: 1px solid #f9fafd;
+      background-color: #f9fafd;
       margin: 8px 0;
       height: 40px;
       padding-top: 15px;
       text-indent: 18px;
       transition: all 0.5s ease-in-out;
       outline: none;
-      font-family: 'Inter', sans-serif;
       font-weight: 500;
       &::placeholder{
-        font-family: 'Inter', sans-serif;
-        font-size: 14px;
+        font-size: 13px;
         color: #535a6d;
+        font-family: 'Gilroy-Medium', sans-serif;
       }
       &:focus{
         outline: none;
@@ -87,18 +85,12 @@
       }
     }
     h3{
-      font-family: 'Inter', sans-serif;
       font-size: 18px;
-      font-weight: 700;
-      color: #2A3045;
+      font-family: 'Gilroy-Regular', sans-serif;
+      font-weight: 600;
+      color: #363c50;
     }
-    p{
-      font-size: 14px;
-      letter-spacing: 0.5px;
-      color: #9b99b3;
-      margin: 5px 0;
-      font-weight: 400;
-    }
+    
     .personal-info{
       height: 22%;
       width: 100%;
@@ -106,12 +98,18 @@
       justify-content: space-between;
       padding-top: 7%;
       padding-bottom: 4%;
-      border-bottom: 1px solid #e4e4e4;
+      border-bottom: 1px solid #ededf8;
       .personal-heading{
         width: 40%;
         height: 30%;
         display: flex;
         position: relative;
+        p{
+          font-size: 14px;
+          color: #9b99b3;
+          margin: 5px 0;
+          font-weight: 400;
+        }
         
         .heading-mark{
           position: absolute;
@@ -137,13 +135,13 @@
           display: flex;
           justify-content: space-between;
           .date-input{
-            width: 40%;
+            width: 37%;
             input{
               width: 100%;
             }
           }
           .time-input{
-            width: 27%;
+            width: 28.2%;
             input{
               width: 100%;
             }
@@ -189,6 +187,12 @@
         height: 17%;
         display: flex;
         position: relative;
+        p{
+          font-size: 14px;
+          color: #9b99b3;
+          margin: 5px 0;
+          font-weight: 400;
+        }
         .heading-mark{
           height: 92%;
           width: 8px;

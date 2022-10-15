@@ -12,10 +12,10 @@ const PartnerForm = () => {
     title: '',
     owner: '',
     image: '',
-    price: null,
+    price: 0,
     location: '',
     desc: '',
-    age: null,
+    age: 0,
     contact: ''
   });
 

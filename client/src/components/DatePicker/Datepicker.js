@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, addDays, subMonths, addMonths } from "date-fns";
 import './Datepicker.scss';
+import OutsideDetect from "../../hooks/detectOutside";
+import calendarImage from "../../assets/icons/icons8-calendar-64 (2).png";
 
 function DatePicker() {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -8,12 +10,16 @@ function DatePicker() {
   const [dates, setDates] = useState([]);
   const [clickedDate, setClickedDate] = useState('');
   const [month, setMonth] = useState();
+  const [showCalendar, setShowCalendar] = useState(false);
 
   let datesArray = [];
 
+  const yyyyMmmm = format(activeDate, "yyyy/MM/");
+
+  console.log("YYMM", yyyyMmmm);
   const currentMonth = format(activeDate, "MMMM yyyy");
 
-  const days = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+  const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
   const getCurrentWeek = (date, selectedDate, activeDate) => {
     let currentDate = date;
@@ -85,50 +91,65 @@ function DatePicker() {
   // console.log(datesArray[0]);
 
   return (
-    <div className="date-container">
-      <div className="datepicker-wrapper">
-        <div className="button-header">
-          <button onClick={() => setActiveDate(subMonths(activeDate, 1))}>prev</button>
-          <button onClick={() => setActiveDate(addMonths(activeDate, 1))}>next</button>
-        </div>
-        <div className="date-header">
-          <h3>{currentMonth}</h3>
-        </div>
-        <div className="date-weekdays">
-          {
-            days.map(day => {
-              return (
-                <p>{day}</p>
-              )
-            })
-          }
-        </div>
-        <div className="dates-wrapper">
-          <div className="date-days">
-            {
-              datesArray.map((date, index) => {
-                return(
-                  <div className="days-content"key={index}>
-                  {
-                    date.map((subdate) => {
-                      return(
-                        <div className="day">
-                          <p className={clickedDate ? 'clicked' : 'unclick'} onClick={onClickDate}>{subdate}</p>
-                        </div>
-                      )
-                    })
-                  }
-                    
-                  </div>
-                )
-              })
-            }
-          </div>
-        </div>
-        
+    <div className="datepicker-input">
+      
+      <div className="date-input-container">
+        <label>Date</label>
+        <input
+          type="text" 
+          placeholder="Select date" 
+          onFocus = {()=>setShowCalendar(true)}
+          onClick={()=>setShowCalendar(true)}
+        />
+        <img src={calendarImage}/>
       </div>
+      <OutsideDetect showCalendar={showCalendar} setShowCalendar={setShowCalendar}>
+        <div className={`datepicker-container ${showCalendar ? "" : "hide"}`}>
+          <div className="datepicker-wrapper">
+            <div className="button-header">
+              <button onClick={() => setActiveDate(subMonths(activeDate, 1))}>{"<"}</button>
+              <h3>{currentMonth}</h3>
+              <button onClick={() => setActiveDate(addMonths(activeDate, 1))}>{">"}</button>
+            </div>
+            <div className="date-weekdays">
+              {
+                days.map(day => {
+                  return (
+                    <p>{day}</p>
+                  )
+                })
+              }
+            </div>
+            <div className="dates-wrapper">
+              <div className="date-days">
+                {
+                  datesArray.map((date, index) => {
+                    return(
+                      <ul className="days-content" key={index}>
+                      {
+                        date.map((subdate) => {
+                          return(
+                            <li className="day">
+                              <p className={clickedDate ? 'clicked' : 'unclick'} onClick={onClickDate}>{subdate}</p>
+                            </li>
+                          )
+                        })
+                      }
+                        
+                      </ul>
+                    )
+                  })
+                }
+              </div>
+            </div>
+            
+          </div>
+          
+        </div>
+      </OutsideDetect>
       
     </div>
+    
   )
 }
 

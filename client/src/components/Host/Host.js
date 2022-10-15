@@ -6,7 +6,8 @@ import './Host.scss';
 function Host() {
   const [data, setData] = useState({
     title: '',
-    owner: ''
+    owner: '',
+    image: ''
   });
   const [imageLink, setImageLink] = useState("");
   // const [formValue, setFormValue] = useState({

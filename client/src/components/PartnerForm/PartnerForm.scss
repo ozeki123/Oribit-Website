@@ -5,12 +5,11 @@
   height: 71.5vh;
   display: flex;
   justify-content: center;
-  margin: 10.5vh 0;
   font-family: 'Inter', sans-serif;
   overflow: none;
   .form-wrapper{
     height: 100%;
-    width: 54%;
+    width: 95%;
     overflow: none;
     .form-title{
       width: 100%;
@@ -23,7 +22,7 @@
       color: #2A3045;
     }
     .input-upload{
-      display: none;
+      
     }
     .input-format{
       width: 100%;
@@ -98,8 +97,8 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
-      padding-top: 7%;
-      padding-bottom: 4%;
+      padding-top: 5.5%;
+      padding-bottom: 3.5%;
       border-bottom: 1px solid #e4e4e4;
       .personal-heading{
         width: 40%;
@@ -201,7 +200,7 @@
     .form-buttons{
       display: flex;
       justify-content: flex-end;
-      margin: 7% 0;
+      padding-top: 4vh;
       :first-child{
         margin: 0 20px;
         width: 65px;

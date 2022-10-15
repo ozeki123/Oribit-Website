@@ -1,54 +1,32 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import axios from "axios";
+import React, { useState } from "react";
 import { useNavigate } from 'react-router';
+import { Dropdown } from '../Dropdown/Dropdown';
 import './CreateGroup.scss';
+import { GroupForm } from './GroupForm/GroupForm';
 
 
 const CreateGroup = () => {
-  const [title, setTitle] = useState('');
-  const [desc, setDesc] = useState('');
-
-  const navigate = useNavigate();
-
-  const currentUser = sessionStorage.getItem('user');
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    axios.post('/groups', {
-      title,
-      owner: currentUser,
-      description: desc
-    })
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err))
-    navigate('/groups');
-  }
-
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
-        <label>Group Title</label>
-        <input 
-          type="text" 
-          id="title" 
-          placeholder="Enter your group name"
-          value={title}
-          required
-          onChange={(e) => setTitle(e.target.value)}
-        />
-
-        <label>Group Description</label>
-        <input
-          type="text"
-          id="desc"
-          placeholder="Enter group description"
-          value={desc}
-          required
-          onChange={(e) => setDesc(e.target.value)}
-        />
-        <button>Submit</button>
-      </form>
+    <section className="create-group-container">
+      <div className="create-group-wrapper">
+        <div className="create-group-header">
+          <h1>Group Information</h1>
+          <p>First, we need to know a little bit more about your group.</p>
+        </div>
+        <div className="line"/>
+        <section className="form-section">
+          <div className="form-header">
+            <h3>Group Info</h3>
+            <p>Enter basic information about your new group.</p>
+          </div>
+          <div className="create-group-form">
+            <GroupForm/>
+          </div>
+          
+        </section>
+        
+      </div>
     </section>
   )
 }

@@ -1,52 +1,120 @@
-.date-container{
-  width: 100%;
-  height: 100%;
-  font-family: 'Aileron';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
+
+.datepicker-input{
   position: relative;
-  border: 0.5px solid rgb(189, 189, 189);
-  border-radius: 5px;
+}
+.date-input-container{
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  input[type=text], textarea, select{
+    color: #4b4f58;
+    height: 50px;
+    border-radius: 8px;
+    border: 1px solid #f0f0f1;
+    background-color: #f0f0f1;
+    margin: 8px 0;
+    height: 40px;
+    padding-top: 15px;
+    text-indent: 18px;
+    transition: all 0.5s ease-in-out;
+    outline: none;
+    font-weight: 500;
+    &::placeholder{
+      font-size: 13px;
+      color: #535a6d;
+    }
+    &:focus{
+      outline: none;
+      border: 1px solid #444CEF;
+    }
+  }
+  label{
+    position: absolute;
+    font-size: 11px;
+    left: 18.5px;
+    top: 19px;
+    color: gray;
+    z-index: 99;
+  }
+  
+  input{
+    width: 100%;
+  }
+  img{
+    position: absolute;
+    right: 15px;
+    top: 26px;
+    width: 20px;
+    height: 20px;
+    
+  }
+}
+.hide{
+  display: none !important;
+}
+.datepicker-container{
+  // position: fixed;
+
+  z-index: 9999;
+  width: 300px;
+  height: 300px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  position: absolute;
+  top: 80px;
+  right: -38.5px;
+  // border: 0.5px solid rgb(218, 218, 218);
+  background-color: white;
+  border-radius: 15px;
   display: flex;
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 80px 15px #7f6cc031;
   .datepicker-wrapper{
     width: 85%;
     
-    height: 90%;
+    height: 66%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     p{
       text-align: center;
     }
   
     .button-header{
-      height: 6%;
-      width: 100%;
-      position: absolute;
+      height: 10%;
+      width: 94.5%;
       display: flex;
       justify-content: space-between;
-      top: 1px;
-      right: 0;
-      button{
-        display: none;
+      align-items: center;
+      
+      h3{
+        font-size: 0.78rem;
+        font-weight: 500;
       }
-    }
-    .date-header{
-      height: 4%;
-      // width: 100%;
-      display: flex;
-      justify-content: center;
+      button{
+        border: none;
+        background: none;
+        font-size: 11px;
+        color: gray;
+      }
     }
   
     .date-weekdays{
       width: 100%;
       height: 9%;
-      margin-top: 30px;
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       align-items: center;
+      padding-top: 5%;
       p{
-        text-transform: uppercase;
-        font-size: 13px;
+        font-size: 10.5px;
         font-weight: 500;
-        color: rgb(169, 169, 173);
+        color: rgb(29, 29, 29);
+        font-weight:600;
       }
       
     }
@@ -56,40 +124,38 @@
       width: 100%;
       height: 100%;
       .date-days{
-        position: absolute;
         height: 100%;
         width: 100%;
         .days-content{
-          height: 15%;
+          height: 18%;
           display: grid;
           grid-template-columns: repeat(7, 1fr);
-          line-height: 52px;
-    
+          line-height: 25px;
+          justify-items: center;
+          align-items: center;
+          list-style: none;
           .day{
             height: 100%;
-            border-radius: 50px;
-    
-    
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             p{
+              height: 63%;
               font-size: 12px;
-            
+              color: rgb(47, 44, 71);
+              border-radius: 100px;
             }
-          }
-    
-          .day:hover{
-            outline: solid 1px black;
+            p:hover{
+              outline: solid 1px black;
+              border-radius: 100px;
+            }
             
           }
     
           
     
-          .clicked{
-    
-          }
-    
-          .unclick{
-            // color: blue;
-          }
+      
         }
       }
     }

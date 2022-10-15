@@ -7,9 +7,12 @@ import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { NumberIcon } from '../NumberIcon/NumberIcon';
 import FormNav from '../FormNav/FormNav';
 import { format } from 'date-fns';
+import axios from 'axios';
+import { Dropdown } from '../Dropdown/Dropdown';
 
 export const Details = () => {
   const [ selectedPlan, setSelectedPlan] = useState('');
+  const [showCalendar, setShowCalendar] = useState(false);
   const [data, setData] = useState({
     date: "",
     checkin: "",
@@ -18,12 +21,13 @@ export const Details = () => {
     package: ""
   });
   const detailForm = useRef(null);
-  const timeArr = ["Select Time", "6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", 
+  const timeArr = ["7:00", "8:00", "9:00", "10:00", "11:00", "12:00", 
   "13:00", "14:00", "15:00","16:00", "17:00", "18:00", "19:00", "20:00", "21:00", 
   "22:00", "23:00"] ;
-  const guestArr = ["Select Guests", "1", "2", "3", "4", "5", "6", "7", "8","9","10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];
+  const guestArr = ["1", "2", "3", "4", "5", "6", "7", "8","9","10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"];
   const packageArr = ["Standard Package", "Equipment Package"];
   const purposeArr = ["Select purpose of use", "Personal Practice", "Team Practice", "Club Practice", "Circle Practice", "Professional Practice", "Tournament", "Camp"]
+  
   useEffect(() => {
      console.log(selectedPlan);
   }, [selectedPlan])
@@ -38,8 +42,8 @@ export const Details = () => {
   }
 
   const formatDate = (dateObj) => {
-    const startDate = `${dateObj.date} ${dateObj.checkin}`;
-    const endDate = `${dateObj.date} ${dateObj.checkout}`;
+    const startDate = new Date(`${dateObj.date} ${dateObj.checkin}`);
+    const endDate = new Date(`${dateObj.date} ${dateObj.checkout}`);
     return {startDate: startDate, endDate: endDate}
   }
 
@@ -48,6 +52,12 @@ export const Details = () => {
     let postData = formatDate(data);
     postData.itemId = "test_item";
     console.log(postData);
+
+    axios.post("/booking", postData)
+      .then((res) => {
+        console.log(res)
+      })
+      .catch(err => console.log(err))
   }
 
   const handleChange = (event) => {
@@ -69,37 +79,46 @@ export const Details = () => {
             <div className="heading-mark"></div>
             <div className="heading-text">
               <h3>Booking Info</h3>
-              <p>Provide additional booking details regarding your reservation.</p>
+              <p>Provide additional booking details.</p>
             </div>
             
           </div>
           <div className="personal-input">
             <div className="details-date">
               <div className="date-input input-format">
-                <label>Date</label>
-                <input 
-                  type="text" 
-                  name="date" 
-                  placeholder="Select date" 
-                  value={data.date} 
-                  onChange={handleChange}
-                />
+                {
+                // <label>Date</label>
+                // <input 
+                //   type="text" 
+                //   name="date" 
+                //   placeholder="Select date" 
+                //   value={data.date} 
+                //   onChange={handleChange}
+                //   onFocus = {()=>setShowCalendar(true)}
+                //   className={showCalendar ? "" : "hide"}
+                // />
+                }
+                <Datepicker/>
               </div>
               <div className="time-input input-format">
-                <label>Check in</label>
-                <select
-                  type="text" 
-                  name="checkin" 
-                  placeholder="Select Time" 
-                  value={data.checkin} 
-                  onChange={handleChange}
-                >
-                {
-                  timeArr.map((time, index) => (
-                    <option>{time}</option>
-                  ))
-                }
-                </select>
+                <Dropdown data={timeArr}/>
+              {
+                // <label>Check in</label>
+                // <select
+                //   type="text" 
+                //   name="checkin" 
+                //   placeholder="Select Time" 
+                //   value={data.checkin} 
+                //   onChange={handleChange}
+                // >
+                // {
+                //   timeArr.map((time, index) => (
+                //     <option>{time}</option>
+                //   ))
+                // }
+                // </select>
+              }
+                
               </div>
               <div className="time-input input-format">
                 <label>Check in</label>

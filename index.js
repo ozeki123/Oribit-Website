@@ -34,9 +34,18 @@ app.use('/users', userRouter);
 app.use('/groups', groupRouter);
 app.use('/booking', bookingRouter)
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-})
+// app.get('/', (req, res) => {
+//     res.send('Hello World!');
+// })
+
+if (process.env.NODE_ENV === 'production') {
+    //*Set static folder
+    app.use(express.static('client/build'));
+    
+    app.get('*', (req,res) => res.sendFile(path.resolve(__dirname, 'client', 'build','index.html')));
+  }
+
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 

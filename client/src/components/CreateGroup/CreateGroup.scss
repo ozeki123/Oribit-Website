@@ -1,0 +1,50 @@
+.create-group-container{
+  width: 85%;
+  height: 100%;
+  font-family: 'Quicksand', sans-serif;
+  .create-group-wrapper{
+    width: 100%;
+    .create-group-header{
+      padding-bottom: 3vh;
+      h1{
+        font-weight: 600;
+        color: #242435;
+        letter-spacing: -1px;
+      }
+      p{
+        font-size: 0.9em;
+        font-weight: 400;
+        color: #7a7c9b;
+        padding-top: 0.6vh;
+        letter-spacing: -0.1px;
+      }
+      
+    }
+    .line{
+      width: 100%;
+      height: 1px;
+      background-color: rgb(235, 235, 241);
+    }
+    .form-section{
+      width: 100%;
+      padding-top: 3vh;
+      display: flex;
+      justify-content: space-between;
+      .form-header{
+        width: 30%;
+        h3{
+          letter-spacing: -0.5px;
+        }
+        p{
+          font-size: 0.9em;
+          color: #7a7c9b;
+          padding-top: 1vh;
+        }
+      }
+      .create-group-form{
+        width: 55%;
+      }
+    }
+
+  }
+}
